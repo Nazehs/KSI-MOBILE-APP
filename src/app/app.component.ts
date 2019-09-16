@@ -10,16 +10,57 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  public appPages = [
+  appPages = [
     {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
+      title: "Dashboard",
+      url: "/app/tabs/dashboards",
+      icon: "stats"
     },
     {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
+      title: "Bookmark",
+      url: "/app/tabs/bookmark",
+      icon: "bookmark"
+    },
+    {
+      title: "Settings",
+      url: "/app/tabs/settings",
+      icon: "options"
+    },
+    {
+      title: "Generals",
+      url: "/app/tabs/generals",
+      icon: "paper"
+    },
+    {
+      title: "Plans",
+      url: "/app/tabs/plans",
+      icon: "calendar"
+    },
+    {
+      title: "Posts",
+      url: "/app/tabs/posts",
+      icon: "stopwatch"
+    },
+    {
+      title: "Prayers",
+      url: "/app/tabs/prayers",
+      icon: "contacts"
+    },
+    {
+      title: "Home",
+      url: "/app/tabs/home",
+      icon: "home"
+    },
+
+    {
+      title: "My Devotions",
+      url: "/app/tabs/devotions",
+      icon: "calendar"
+    },
+    {
+      title: "About",
+      url: "/app/tabs/about",
+      icon: "information-circle"
     }
   ];
 

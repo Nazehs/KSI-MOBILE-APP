@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/posts"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{post.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="post-detail">
+  <div text-center *ngIf="post">
+    <!-- <img [src]="speaker.profilePic" [alt]="speaker.name"> -->
+    <!-- <ion-col size="6" text-right [ngClass]="{'show-favorite': isFavorite}">
+        <ion-icon name="heart-empty" size="large" class="icon-heart-empty" (click)="toggleFavorite()"></ion-icon>
+        <ion-icon name="heart" color="danger" size="large" class="icon-heart" (click)="toggleFavorite()"></ion-icon>
+      </ion-col> -->
+    <div ion-item>
+      <ion-item lines="inset">
+        <!-- author avatar -->
+        <ion-avatar slot="start">
+          <img src="../../assets/img/appicon.png">
+        </ion-avatar>
+        <!-- authors name -->
+        <ion-label>{{post.author}}</ion-label>
+        <ion-label slot="end" class="post-date">{{post.date}}</ion-label>
+      </ion-item>
+    </div>
+    <!-- social handles fr author -->
+    <div class="social-icons">
+      <ion-button fill="clear" size="small" color="twitter">
+        <ion-icon name="logo-twitter" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" size="small" color="github">
+        <ion-icon name="logo-facebook" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" size="small" color="instagram">
+        <ion-icon name="logo-instagram" slot="icon-only"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+<!-- main post content -->
+  <ion-text>{{post.body}}</ion-text>
+</ion-content>

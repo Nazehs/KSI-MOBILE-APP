@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form id="editform" #form>
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input [(ngModel)]="data.email" name="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Full Name</ion-label>
+      <ion-input [(ngModel)]="data.name" name="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Mobile Number</ion-label>
+      <ion-input [(ngModel)]="data.mobile" name="mobile"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Address</ion-label>
+      <ion-input [(ngModel)]="data.address" name="address"></ion-input>
+    </ion-item>
+    <ion-row class="sex">
+      <ion-radio-group (ionChange)="onChangeHandler($event)">          
+          <ion-radio value="Male" [checked]="this.data.sex==='Male'"></ion-radio>
+          <ion-label>Male</ion-label>
+          &nbsp;  &nbsp;&nbsp;
+          <ion-radio value="Female" [checked]="this.data.sex==='Female'"></ion-radio>
+          <ion-label>Female</ion-label>
+      </ion-radio-group>
+      <!-- <p>{{this.data.sex}}</p> -->
+    </ion-row>
+  </form>
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="cancelModal()">Cancel</ion-button>
+    </ion-col>
+    <ion-col text-right>
+      <ion-button (click)="submitModal()">Update</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

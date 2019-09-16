@@ -1,4 +1,118 @@
-.welcome-card img {
-  max-height: 35vh;
-  overflow: hidden;
+.scroll {
+  --background: #ededed;
+}
+.sticky-item{
+  --background:var(--ion-color-step-50,#f2f2f2)!important;
+}
+ion-content{
+  --background: #fff;
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+}
+
+
+.posts-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.posts-card ion-card-header {
+  padding: 0;
+}
+.devotion-topic{
+top: calc(50% - 53px/2 - 196.5px);
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: bolder;
+font-size: 18px;
+// line-height: 22px;
+color: #999;
+}
+.devotion-date{
+  margin-top: -10px;
+  font-family: 'Montserrat';
+font-style: normal;
+font-weight: normal;
+font-size: 10px;
+line-height: 12px;
+color: #CCCCCC;
+}
+.devotion-excerpt{
+  margin-top:-8px;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 15px;
+color: #AAAAAA;
+text-align: justify;
+}
+ion-item-sliding{
+  margin-bottom: -18px;
+}
+.excerpt-wp{
+  text-align: justify!important;
+  letter-spacing: 20px;
+  word-spacing: -1px!important
+}
+.excerpt-text{
+  color:#666;
+  // text-align: justify;
+  letter-spacing: 0;
+  word-spacing: -1px;
+  word-break: break-word;
+  line-height: 1.7;
+  font-size: 14px;
+
+}
+
+.posts-card ion-card-header .item {
+  padding: 4px 16px;
+}
+
+.posts-card ion-card-content {
+  flex: 1 1 auto;
+
+  padding: 0;
+}
+.avatar{
+  // height: 40px;
+  // width: 40px;
+  // border:1px solid #69bb7b;
+  // background: url('../../../assets/img/appicon.png');
+  // background-position: center;
+  // background-size: contain;
+  display: inline-block!important
+}
+.authors-name{
+  float:left;
+  display: inline-block;
+}
+.post-date{
+  font-size: 10px;
+  text-align:right;
+  float: right;
+}
+.post-item{
+  font-family: inherit;
+
+}
+
+$categories: (
+ionic: var(--ion-color-primary),
+angular: #ac282b,
+communication: #8e8d93,
+tooling: #fe4c52,
+services: #fd8b2d,
+design: #fed035,
+workshop: #69bb7b,
+food: #3bc7c4,
+documentation: #b16be3,
+navigation: #6600cc
+);
+
+@each $posts, $value in map-remove($categories) {
+ion-item-sliding[track='#{$posts}'] ion-label {
+  border-left: 2px solid $value;
+  padding-left: 10px;
+}
 }

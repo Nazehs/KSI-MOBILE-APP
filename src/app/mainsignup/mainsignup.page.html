@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Sign Up </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- welcoming text wrp -->
+  <div class="login-text-top" padding-top>
+    <ion-col col-12 text-center>
+      <!-- login page logo -->
+      <div class="splash-logo"></div>
+    </ion-col>
+    <!-- welcome text -->
+    <div text-center>
+      <h3 class="welcomeText">Sign Up To Keep track of your stuffs</h3>
+    </div>
+  </div>
+  <!-- sign up form -->
+  <form #signForm="ngForm" novalidate>
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Full Name</ion-label>
+        <ion-input type="text" #fullName="ngModel" name="fullName" [(ngModel)]="signsUps.fullName" required></ion-input>
+      </ion-item>
+      <!-- error if form -->
+      <!-- <ion-text color="danger">
+          <p [hidden]="fullName.valid || submitted == false" padding-left>
+            Full Name is required
+          </p>
+        </ion-text> -->
+      <ion-item>
+        <ion-label position="floating">Email Address</ion-label>
+        <ion-input #email="ngModel" [(ngModel)]="signsUps.email" name="email" type="email" required></ion-input>
+      </ion-item>
+      <!-- <ion-text color="danger">
+          <p [hidden]="email.valid || submitted == false" padding-left>
+            Email is required
+          </p>
+        </ion-text> -->
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input #password="ngModel" [(ngModel)]="signsUps.password" name="password" type="password" required></ion-input>
+      </ion-item>
+      <!-- <ion-text color="danger">
+          <p [hidden]="password.valid || submitted == false" padding-left>
+            Password is required
+          </p>
+        </ion-text> -->
+      <ion-item>
+        <ion-label position="floating">Confirm Password</ion-label>
+        <ion-input #passwordComfirm="ngModel" [(ngModel)]="signsUps.passwordComfirm" name="passwordComfirm" type="password" required></ion-input>
+      </ion-item>
+      <ion-text color="danger">
+          <p [hidden]="passwordComfirm.valid || submitted == false" padding-left>
+            Comfirm password is required
+          </p>
+        </ion-text>
+    </ion-list>
+    <div class="sign-up-btn">
+        <ion-button (click)="appSignUp(signForm)" expand="block" color="primary" fill="outline"
+        >Create Account
+      </ion-button>
+    </div>
+  </form>
+  <!-- //end of login form -->
+  <div class="havin-account-option">
+    <p (click)="appLogin()">Have an account? <ion-text color="primary">Login</ion-text></p>
+  </div>
+</ion-content>

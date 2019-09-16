@@ -24,3 +24,29 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+@import '~material-icons/css/material-icons.scss';
+// @import '~material-icons/css/material-icons.min.css';
+
+
+body{
+    font-family: 'Montserrat'
+}
+
+.searchbar-input{
+    border-radius: 25px!important;    
+  --background: var(--ion-color-step-50,#f2f2f2)!important;
+  box-shadow: none!important;
+
+}
+.footer-labels{
+    font-size: 16px!important;
+    text-transform: capitalize;
+  }
+.search-wrapper{
+    position: absolute;
+  width: 343px;
+  height: 36px;
+  left: 7px;
+  top: 42px;
+  
+  }

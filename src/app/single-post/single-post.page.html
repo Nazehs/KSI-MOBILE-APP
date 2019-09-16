@@ -1,0 +1,56 @@
+<ion-header *ngIf="post">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ post.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="post-detail">
+  <div *ngIf="post; let i = index;">
+    <div ion-item class="wrapper">
+      <ion-text>
+        <p class="date-single-post">
+          <ion-row>
+            <ion-col size="8">
+              <span> 20th September, 2019</span>
+            </ion-col>
+            <ion-col size="4">
+              <li>4 Min Read</li>
+            </ion-col>
+          </ion-row>
+        </p>
+      </ion-text>
+      <h3 class="post-title">{{post.title}}</h3>
+      <p class="post-reference">
+        Reference: Mat. 12:16, John 3:16
+      </p>
+    </div>
+  </div>
+  <!-- main post content -->
+  <ion-grid class="no-padding">
+    <ion-row class="post-content" *ngIf="post">
+      <ion-text>
+        {{ post.body }}
+            </ion-text>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>
+
+      <ion-row class="footer-icons">
+        <ion-col class="ion-text-center" size="6" [ngClass]="{'show-favorite': isFavorite}">
+          <ion-icon name="heart-empty" class="favourite" size="large" class="ion-text-center" class="icon-heart-empty"
+            (click)="toggleFavorite()"></ion-icon>
+          <ion-icon name="heart" color="danger" size="large" class="icon-heart" (click)="toggleFavorite()"></ion-icon>
+        </ion-col>
+        <ion-col class="share" size="6" class="ion-text-center" [ngClass]="{ 'show-favorite': isFavorite }">
+          <ion-icon name="share" size="large" class="icon-share-alt" (click)="regularShare(i)"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

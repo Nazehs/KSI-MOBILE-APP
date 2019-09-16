@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Dashboard</ion-title>
+  </ion-toolbar>
+  <!-- end of main header toolbar -->
+</ion-header>
+<ion-content>
+  <!-- upper  wrapper -->
+  <ion-card class="dashboard-upper">
+    <ion-card-content>
+      <ion-row>
+        <ion-col size="2">
+            <div>
+                <div class="hero-avatar">
+                    <img src="../../../assets/img/appicon.png" alt="Speaker profile pic">
+                 </div>  
+            </div>
+          </ion-col>
+        <ion-col>
+          Nazeh Abel
+          <!-- avatar email address -->
+          <p class="user-email">Nazehabel@gmail.com</p>
+          <ion-button size="small" class="edit-btn" shape="round" fill="outline">Edit Profile</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <!-- end of  upper wrapper -->
+  <!-- middle wrapper -->
+  <div class="dashboard-middle">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>
+          <ion-row>
+            <ion-col>Today</ion-col>
+            <ion-col>31 Jan, 2018</ion-col>
+          </ion-row>
+        </ion-card-subtitle>
+        <hr>
+      </ion-card-header>
+      <!-- icons and text for navigations -->
+      <ion-card-content>
+        <ion-row>
+          <ion-col>
+            <div>
+              <!-- Mini icon and text for love -->
+              <ion-fab-button size="small" color="light" class="icon-wp">
+                <ion-icon name="heart" class="love"></ion-icon>
+              </ion-fab-button>
+              <p class="text-label">Love</p>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <!-- Mini icon and text for prayers -->
+              <ion-fab-button size="small" color="light" class="icon-wp">
+                <ion-icon name="bonfire" class="prayers"></ion-icon>
+              </ion-fab-button>
+              <p class="text-label">Prayers</p>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <!-- Mini icon and text for Requests -->
+              <ion-fab-button size="small" color="light" class="icon-wp">
+                <ion-icon name="people" class="requests"></ion-icon>
+              </ion-fab-button>
+
+            </div>
+            <p class="text-label">Request</p>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <!-- end of the middle wp -->
+
+  <!--dashboard bottom container wp -->
+  <div class="dashboard-bottom">
+    <ion-card>
+      <!-- icons and text for navigations -->
+      <ion-card-content>
+        <ion-row>
+          <ion-col>
+            <div class="inline-block">
+              <!-- Mini icon and text for Insight -->
+              <ion-fab-button size="small" color="dark" class="icon-wp">
+                <ion-icon name="add" class="insight"></ion-icon>
+              </ion-fab-button>
+            </div>
+            <p class="text-label">Insight</p>
+          </ion-col>
+          <ion-col>
+            <div class="inline-block">
+              <!-- Mini icon and text for Verses -->
+              <ion-fab-button size="small" color="light" class="icon-wp">
+                <ion-icon name="bookmark" class="bookmark"></ion-icon>
+              </ion-fab-button>
+            </div>
+            <p class="text-label">Bookmark</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div class="inline-block">
+              <!-- Mini icon and text for Verses -->
+              <ion-fab-button size="small" color="secondary" class="icon-wp">
+                <ion-icon name="rose" class="verses"></ion-icon>
+              </ion-fab-button>
+            </div>
+            <p class="text-label">Verses</p>
+          </ion-col>
+          <ion-col>
+            <div class="inline-block">
+              <!-- Mini icon and text for motivation -->
+              <ion-fab-button size="small" color="primary" class="icon-wp">
+                <ion-icon name="quote" class="motivation"></ion-icon>
+              </ion-fab-button>
+            </div>
+            <p class="text-label">Motivation</p>
+          </ion-col>
+
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <!-- end of bottom dashboard -->
+</ion-content>

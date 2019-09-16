@@ -1,0 +1,97 @@
+.post-detail img {
+  max-width: 140px;
+  border-radius: 50%;
+}
+.post-detail{
+  padding-top: 0!important;
+}
+.wrapper{
+  margin-top: -17px;
+}
+.author-name{
+  font-size: 16px;
+}
+.post-detail ion-text {
+  color: #60646b;
+  // color:#999;
+  text-align: justify;
+  letter-spacing: 0;
+  word-spacing: -1px;
+  word-break: break-word;
+  line-height: 1.7;
+  font-size: small;
+}
+ion-avatar{
+  margin-right:8px;
+}
+.footer-icons {
+  height: 37px;
+}
+
+.show-favorite {
+  position: relative;
+}
+.favourite {
+  // float: left;
+  text-align: center!important;
+}
+*{
+  font-family: 'Montserrat'
+}
+ion-title{
+  padding-left: 0;
+  text-transform: capitalize;
+}
+.date-single-post{
+  color: #CCCCCC
+}
+.post-reference{
+  color: #56CCF2;
+  text-align: left;
+}
+.post-title{
+  text-transform: uppercase;
+  text-align: left;
+  margin-top: -17px;
+  margin-bottom: -13px;
+  font-style: normal;
+  font-weight: bolder;
+  font-size: 18px;
+  color: #999;
+}
+.post-content{
+  margin-top: -3px;
+}
+.post-content ion-text{
+  color: #CCCCCC;
+  font-size: 16px;
+  font-family: 'Montserrat'
+}
+.share {
+  // float: left;
+  text-align: center!important;
+}
+
+.icon-heart-empty {
+  // position: absolute;
+  // top: 5px;
+  right: 5px;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+.icon-heart {
+  // position: absolute;
+  // top: 5px;
+  right: 5px;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+
+.show-favorite .icon-heart {
+  transform: scale(1);
+  margin-left: -30px;
+}
+
+.show-favorite .icon-heart-empty {
+  transform: scale(0);
+}

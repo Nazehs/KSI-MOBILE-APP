@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>About</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentPopover($event)">
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="about-header">
+    <img src="assets/img/ionic-logo-white.svg" alt="ionic logo" />
+  </div>
+  <div padding class="about-info">
+    <h4>Kingdom Support Initiatives</h4>
+<ion-text>
+  This is what KSI is about
+</ion-text>
+    <!-- <ion-list lines="none">
+      <ion-item>
+        <ion-icon name="calendar" slot="start"></ion-icon>
+        <ion-label>Date</ion-label>
+        <ion-datetime
+          displayFormat="MMM DD, YYYY"
+          max="2056"
+          [(ngModel)]="conferenceDate"
+        ></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="pin" slot="start"></ion-icon>
+        <ion-label>Location</ion-label>
+        <ion-select>
+          <ion-select-option value="madison" selected
+            >Madison, WI</ion-select-option
+          >
+          <ion-select-option value="austin">Austin, TX</ion-select-option>
+          <ion-select-option value="chicago">Chicago, IL</ion-select-option>
+          <ion-select-option value="seattle">Seattle, WA</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list> -->
+    <h4>About KSi</h4>
+    <ion-text>
+      Kingdom Support Initiatives is a God-ordained commission established to
+      raising God’s children to change the world system and impact the world
+      with the new life that is in Christ Jesus for a generation of new breed of
+      kingdom citizens. Through her programmes, KSi will create platform for
+      disciples to connect, interact, synergize, and strengthen one another to
+      grow in God.
+    </ion-text>
+    <h4>About ‘In His Footstep’</h4>
+    <ion-text>
+      ‘In His Footstep’ is a daily devotional to build continuous relationship
+      with God. Through the word of God and the power of the Holy Spirit, the
+      devotional seeks life to be transformed in Jesus Christ. The devotional is
+      written by Kingdom Support Initiatives.
+    </ion-text>
+
+    <h4>PUSH Network – Pray Until Something Happen Network</h4>
+    <ion-text>
+      The goal of this network is to create a safe for people to prayer and
+      intercession.
+    </ion-text>
+    <h4>Inspire Impact</h4>
+    <ion-text>
+      It is a podcast we are developing already to encourage and inspire God’s
+      children to be bold for pursue whatever God is laying upon their hearts.
+      Also, the podcast will create an opportunity for as many who want to
+      explore Christianity.
+    </ion-text>
+  </div>
+</ion-content>

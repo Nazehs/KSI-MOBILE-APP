@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Login </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <!-- welcoming text wrp -->
+    <div class="login-text-top" padding-top>
+      <ion-col col-12 text-center>
+        <!-- login page logo -->
+        <div class="splash-logo"></div>
+      </ion-col>
+      <!-- welcome text -->
+      <div text-center><h3 class="welcomeText">Welcome Back!!!</h3></div>
+    </div>
+    <!-- login form -->
+    <form #loginForm="ngForm" validate>
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Email Address</ion-label>
+          <ion-input type="email" [(ngModel)]="login.username" #username="ngModel" name="username" inputmode="email" clearInput required></ion-input>
+        </ion-item>
+        <ion-text color="danger">
+            <p [hidden]="username.valid || submitted == false" padding-left>
+              username is required
+            </p>
+          </ion-text>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input [(ngModel)]="login.password" name="password" #password="ngModel" type="password" clearInput required></ion-input>
+        </ion-item>
+        <ion-text color="danger">
+            <p [hidden]="password.valid || submitted == false" padding-left>
+              password is required
+            </p>
+          </ion-text>
+      </ion-list>
+      <div class="login-btn"></div>
+      <ion-button expand="block" color="primary" (click)="appLogin(loginForm)" fill="outline"
+        >Login
+        <ion-ripple-effect></ion-ripple-effect>
+      </ion-button>
+    </form>
+    <!-- //end of login form -->
+   <div class="havin-account-option" >
+     <p (click)="appSignup()">Don't have an account? <ion-text color="primary">Sign Up</ion-text> </p>
+   </div>
+   <div class="havin-account-option" >
+      <p (click)="appForgotPass()"><ion-text color="primary">Forgot Password?</ion-text> </p>
+    </div>
+  </ion-content>  

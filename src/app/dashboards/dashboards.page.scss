@@ -1,0 +1,94 @@
+.dashboard-upper {
+    margin: 0 !important;
+    min-height: 190px;
+    background: #3bc7c4;
+    box-shadow: none;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+
+}
+.hero-avatar{
+    height: 45px;
+    width: 45px; 
+}
+.hero-avatar img{
+    border-radius: 50%;
+}
+.dashboard-upper .item-native{
+    background: #3bc7c4!important;
+}
+.avatar-line{
+    background: #3bc7c4!important;
+}
+ion-item.avatar-line .item-native{
+    background: #3bc7c4!important;
+}
+.edit-btn{
+    --border-color:#fff;
+    --color:#fff;
+}
+.dashboard-upper ion-card {
+  background: none !important;
+}
+.user-email {
+  display: block;
+  font-size: 10px;
+}
+.dashboard-middle {
+  text-align: center;
+}
+.icon-wp {
+  margin: 5px auto !important;
+}
+.dashboard-middle ion-card-content {
+  padding-bottom: 20px;
+}
+.dashboard-middle .love {
+  color: #c27ba0;
+}
+.dashboard-middle .prayers {
+  color: #9fc5f8;
+}
+
+.dashboard-middle  .requests {
+  color: #76a5af;
+}
+.dashboard-middle {
+  margin-top: -77px;
+  margin-bottom: 40px;
+}
+.bookmark-wp {
+    // background: #c27ba0!important;
+}
+.dashboard-middle ion-card-header {
+  padding-top: 20px;
+  padding-bottom: 15px;
+  padding-left: 0;
+  padding-right: 0;
+}
+.dashboard-bottom {
+  margin-top: 20px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.dashboard-bottom .text-label {
+    display: inline-block;
+    vertical-align: 15px;
+    margin-left: 18px;
+    line-height: 3em;
+}
+.dashboard-bottom ion-card {
+  box-shadow: none !important;
+}
+.dashboard-bottom .inline-block {
+  display: inline-block;
+}
+
+.dashboard-bottom .insight,.motivation{
+    color:#ccc;
+}
+
+.dashboard-bottom .bookmark,.verses{
+    color:#777;
+}
