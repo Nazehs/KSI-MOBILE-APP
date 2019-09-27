@@ -42,6 +42,11 @@ export class MainsignupPage implements OnInit {
 
   // redirect to login page
   appLogin(){
-    this.router.navigateByUrl('/Mainlogin');
+    this.router.navigateByUrl('/mainlogin');
   }
+
+  appForgotPass() {
+    this.router.navigate(['/forgot-password'])
+  }
+  
 }

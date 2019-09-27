@@ -30,27 +30,27 @@ export class DashboardsPage implements OnInit {
 
   ngOnInit() {}
   navPrayers() {
-    this.router.navigateByUrl("/app/tabs/prayers");
+    this.router.navigateByUrl("/app/tabs/dashboards/prayers");
   }
 
   navInsight() {
-    this.router.navigateByUrl("/app/tabs/insight");
+    this.router.navigateByUrl("/app/tabs/dashboards/insight");
   }
   navVerses() {
-    this.router.navigateByUrl("/app/tabs/verses");
+    this.router.navigateByUrl("/app/tabs/dashboards/verses");
   }
 
   navLove() {
-    this.router.navigateByUrl("/app/tabs/love");
+    this.router.navigateByUrl("/app/tabs/dashboards/love");
   }
   navRequests() {
-    this.router.navigateByUrl("/app/tabs/requests");
+    this.router.navigateByUrl("/app/tabs/dashboards/requests");
   }
   navMotivation() {
-    this.router.navigateByUrl("/app/tabs/motivation");
+    this.router.navigateByUrl("/app/tabs/dashboards/motivation");
   }
   navBookmark() {
-    this.router.navigateByUrl("/app/tabs/bookmark");
+    this.router.navigateByUrl("/app/tabs/dashboards/bookmark");
   }
 
   async editProfile() {

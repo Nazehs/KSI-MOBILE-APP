@@ -1,3 +1,11 @@
+import { VersesPageModule } from './../verses/verses.module';
+import { RequestsPageModule } from './../requests/requests.module';
+import { DashboardPageModule } from './../dashboard/dashboard.module';
+import { BookmarkPageModule } from './../bookmark/bookmark.module';
+import { InsightPageModule } from './../insight/insight.module';
+import { MotivationPageModule } from './../motivation/motivation.module';
+import { LovePageModule } from './../love/love.module';
+import { PrayersPageModule } from './../prayers/prayers.module';
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { TabsPage } from "./tabs-page";
@@ -12,11 +20,12 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path:'home',
-        children:[
-         { path:"",
-          component:HomePage
-        }
+        path: 'home',
+        children: [
+          {
+            path: "",
+            component: HomePage
+          }
         ]
       },
       {
@@ -75,8 +84,34 @@ const routes: Routes = [
         children: [
           {
             path: "",
-            loadChildren: "../dashboards/dashboards.module#DashboardsPageModule"
-          }
+            // loadChildren: "../journeys/journeys.module#JourneysPageModule"
+            loadChildren:()=>import('../dashboards/dashboards.module').then(m => m.DashboardsPageModule)
+          },
+          {
+            path: "bookmark",
+            loadChildren:()=>import('../bookmark/bookmark.module').then(m => m.BookmarkPageModule) 
+          },
+          {
+            path: "prayers",
+            loadChildren:()=>import(('../prayers/prayers.module')).then(m => m.PrayersPageModule)
+          },
+          { path: "love", loadChildren: ()=>import(('../love/love.module')).then(m => m.LovePageModule) },
+          {
+            path: "motivation",
+             loadChildren: ()=>import(('../motivation/motivation.module')).then(m => m.MotivationPageModule)
+          },
+          {
+            path: "insight",
+            loadChildren: ()=>import(('../insight/insight.module')).then(m => m.InsightPageModule)
+          },
+          {
+            path: "requests",
+            loadChildren: ()=>import(('../requests/requests.module')).then(m => m.RequestsPageModule)
+          },
+          {
+            path: "verses",
+            loadChildren:()=>import(('../verses/verses.module')).then(m => m.VersesPageModule)
+          },
         ]
       },
       {
@@ -112,35 +147,14 @@ const routes: Routes = [
       },
       {
         path: "generals",
-        loadChildren: "../generals/generals.module#GeneralsPageModule"
+        loadChildren: "./generals/generals.module#GeneralsPageModule"
       },
-      { path: "plans", loadChildren: "../plans/plans.module#PlansPageModule" },
-
-      {
-        path: "prayers",
-        loadChildren: "../prayers/prayers.module#PrayersPageModule"
-      },
-      { path: "love", loadChildren: "../love/love.module#LovePageModule" },
-      {
-        path: "motivation",
-        loadChildren: "../motivation/motivation.module#MotivationPageModule"
-      },
-      {
-        path: "insight",
-        loadChildren: "../insight/insight.module#InsightPageModule"
-      },
-      {
-        path: "requests",
-        loadChildren: "../requests/requests.module#RequestsPageModule"
-      },
-      {
-        path: "verses",
-        loadChildren: "../verses/verses.module#VersesPageModule"
-      },
+      { path: "plans", loadChildren: "./plans/plans.module#PlansPageModule" },
+    
       // { path: "plans", loadChildren: "../plans/plans.module#PlansPageModule" },
       {
         path: "generals",
-        loadChildren: "../generals/generals.module#GeneralsPageModule"
+        loadChildren: "./generals/generals.module#GeneralsPageModule"
       }
     ]
   }
@@ -150,4 +164,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

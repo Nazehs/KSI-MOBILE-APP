@@ -14,7 +14,7 @@ export class ForgotPasswordPage implements OnInit {
   }
    // redirect to login page
    resetPassword(){
-    this.router.navigateByUrl('/Mainlogin');
+    this.router.navigateByUrl('/mainlogin');
   }
 
 }

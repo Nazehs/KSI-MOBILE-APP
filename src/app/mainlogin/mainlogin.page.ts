@@ -51,7 +51,7 @@ export class MainloginPage implements OnInit {
   }
   // navigate to sign up if no account
   appSignup(){
-    this.router.navigateByUrl('/Mainsignup');
+    this.router.navigateByUrl('/mainsignup');
   }
   // navigate to forgot password
   appForgotPass(){

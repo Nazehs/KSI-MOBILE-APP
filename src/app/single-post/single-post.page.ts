@@ -106,6 +106,13 @@ export class SinglePostPage {
     fab.close();
   }
 
+
+  getDevotionLength(devotionText) {
+    let words = devotionText.split(' ');
+    let wordLength = words.length;
+    return wordLength / 200 < 1 ? 1 : wordLength / 200;
+    
+  }
 //  this.socialSharing.canShareVia().then(()=>{});
 
 }

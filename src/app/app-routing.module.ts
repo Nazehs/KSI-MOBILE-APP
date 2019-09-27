@@ -15,8 +15,20 @@ const routes: Routes = [
     loadChildren: () => import('./tabs-page/tabs-page.module').then(m => m.TabsModule)
   },
   {
+    path: 'mainlogin',
+    loadChildren: () => import('./mainlogin/mainlogin.module').then(m => m.MainloginPageModule)
+  },
+  {
+    path: 'mainsignup',
+    loadChildren: () => import('./mainsignup/mainsignup.module').then(m => m.MainsignupPageModule)
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./forgot-password/forgot-password.module').then(m => m.ForgotPasswordPageModule)
+  },
+  {
     path: "single-post/:postId",
-    loadChildren:() => import('./single-post/single-post.module').then(m => m.SinglePostPageModule)
+    loadChildren: () => import('./single-post/single-post.module').then(m => m.SinglePostPageModule)
   },
   {
     path: '',
@@ -32,4 +44,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -34,8 +34,14 @@
     "core-js": "^2.5.4",
     "hammerjs": "^2.0.8",
     "material-icons": "^0.3.1",
+    "open": "^6.4.0",
+    "request": "^2.88.0",
     "rxjs": "~6.5.1",
+    "string-width": "^4.1.0",
+    "strip-ansi": "^5.2.0",
+    "tree-kill": "^1.2.1",
     "tslib": "^1.9.0",
+    "untildify": "^4.0.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
