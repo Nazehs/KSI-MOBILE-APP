@@ -9,16 +9,13 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HttpErrorResponse, HttpHeaders, HttpClient } from '@angular/common/http';
-import { TutorialModule } from './tutorial/tutorial.module';
 import { IonicStorageModule } from '@ionic/storage';  
-import { SchedulePage } from './schedule/schedule';
-import { ScheduleFilterPage } from './schedule-filter/schedule-filter';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [AppComponent,
+  declarations: [AppComponent, 
     // FormsModule, ReactiveFormsModule
   ],
   entryComponents: [],

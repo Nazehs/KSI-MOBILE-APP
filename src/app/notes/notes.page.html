@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons class="clipboard" slot="end">
+      <ion-icon name="clipboard"></ion-icon>
+    </ion-buttons>
+    <ion-title>Notes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div class="list-item" style="background:#F6F1F1; height: 65px; padding:10px">
+      <ion-text class="note-title">Naming it later</ion-text>
+      <ion-text class="note-date">20 June, 2019</ion-text>
+    </div>
+    <div class="list-item" style="background:#fff; height: 65px;padding:10px">
+      <ion-text class="note-title">Naming it later</ion-text>
+      <ion-text class="note-date">20 June, 2019</ion-text>
+    </div>
+
+    <div class="list-item" style="background:#F6F1F1; height: 65px; padding:10px">
+      <ion-text class="note-title">Naming it later</ion-text>
+      <ion-text class="note-date">20 June, 2019</ion-text>
+    </div>
+
+    <div class="list-item" style="background:#fff; height: 65px;padding:13px">
+      <ion-text class="note-title">Naming it later last vvv<i class="fab fa-lastfm-square"></i></ion-text>
+      <ion-text class="note-date">20 June, 2019</ion-text>
+    </div>
+    <div class="list-item" style="background:#F6F1F1; height: 65px; padding:10px">
+      <ion-text class="note-title">Naming it later</ion-text>
+      <ion-text class="note-date">20 June, 2019</ion-text>
+    </div>
+
+    <div class="list-item" style="background:#fff; height: 65px;padding:10px">
+      <ion-text class="note-title">Naming it later last<i class="fab fa-lastfm-square"></i></ion-text>
+      <ion-text class="note-date">20 June, 2019</ion-text>
+    </div>
+  </div>
+  <!-- this will show up when there is no note content -->
+  <!-- <div class="" *ngIf="counter <= 0">
+    <ion-row class="row-empty-note">
+      <ion-col class="text-center" text-center>
+        <p class="note-empty-text">No Favorite Devotion!</p>
+        <p class="empty-note">
+
+        </p>
+      </ion-col>
+    </ion-row>
+  </div> -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+</ion-content>
+

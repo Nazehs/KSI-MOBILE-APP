@@ -35,7 +35,14 @@ const routes: Routes = [
     redirectTo: '/onboarding',
     pathMatch: 'full'
   },
-  { path: 'onboarding', loadChildren: './onboarding/onboarding.module#OnboardingPageModule' },
+  { path: 'onboarding', loadChildren: './onboarding/onboarding.module#OnboardingPageModule' },  { path: 'inspire-impact', loadChildren: './inspire-impact/inspire-impact.module#InspireImpactPageModule' },
+  { path: 'notes', loadChildren: './notes/notes.module#NotesPageModule' },
+  { path: 'daily-verse', loadChildren: './daily-verse/daily-verse.module#DailyVersePageModule' },
+  { path: 'daily-nudget', loadChildren: './daily-nudget/daily-nudget.module#DailyNudgetPageModule' },
+  { path: 'daily-words', loadChildren: './daily-words/daily-words.module#DailyWordsPageModule' },
+  { path: 'word-clips', loadChildren: './word-clips/word-clips.module#WordClipsPageModule' },
+  { path: 'push-network', loadChildren: './push-network/push-network.module#PushNetworkPageModule' },
+
 ];
 
 @NgModule({

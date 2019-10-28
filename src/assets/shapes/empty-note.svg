@@ -1,11 +1,11 @@
 <svg width="116" height="116" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="58" cy="58" r="58" fill="url(#paint0_linear)" fill-opacity="0.85"/>
-<path d="M44.25 39.75V51H44.2688L44.25 51.0188L51.75 58.5L44.25 66L44.2688 66.0188H44.25V77.25H66.75V66.0188H66.7312L66.75 66L59.25 58.5L66.75 51.0188L66.7312 51H66.75V39.75H44.25ZM63 66.9375V73.5H48V66.9375L55.5 59.4375L63 66.9375ZM55.5 57.5625L48 50.0625V43.5H63V50.0625L55.5 57.5625Z" fill="#E5E5E5"/>
+<path d="M75 54.125L64.5 41H43.5C41.575 41 40 42.9687 40 45.375V71.6469C40 74.0531 41.575 76 43.5 76L71.5 75.9781C73.425 75.9781 75 74.0313 75 71.625V54.125V54.125ZM62.75 44.2812L72.375 56.3125H62.75V44.2812Z" fill="#3BC7C4"/>
 <defs>
 <linearGradient id="paint0_linear" x1="58" y1="3.45707e-06" x2="1.27842e-06" y2="102" gradientUnits="userSpaceOnUse">
-<stop offset="0.18325" stop-color="#3BC7C4"/>
-<stop offset="0.448861" stop-color="#1EC5DB" stop-opacity="0.567763"/>
-<stop offset="0.990559" stop-color="#00BCD4" stop-opacity="0"/>
+<stop offset="0.18325" stop-color="#E5E5E5"/>
+<stop offset="0.448861" stop-color="#EEEEEE"/>
+<stop offset="0.990559" stop-color="#DCDCDC"/>
 </linearGradient>
 </defs>
 </svg>

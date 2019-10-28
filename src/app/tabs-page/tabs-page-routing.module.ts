@@ -76,8 +76,8 @@ const routes: Routes = [
         ]
       },
       {
-        path: "journeys",
-        loadChildren: "../journeys/journeys.module#JourneysPageModule"
+        path: "notes",
+        loadChildren:()=>import('../notes/notes.module').then(m => m.NotesPageModule)
       },
       {
         path: "dashboards",
@@ -88,17 +88,17 @@ const routes: Routes = [
             loadChildren:()=>import('../dashboards/dashboards.module').then(m => m.DashboardsPageModule)
           },
           {
-            path: "bookmark",
-            loadChildren:()=>import('../bookmark/bookmark.module').then(m => m.BookmarkPageModule) 
+            path: "daily-nudget",
+            loadChildren:()=>import('../daily-nudget/daily-nudget.module').then(m => m.DailyNudgetPageModule) 
           },
           {
             path: "prayers",
             loadChildren:()=>import(('../prayers/prayers.module')).then(m => m.PrayersPageModule)
           },
-          { path: "love", loadChildren: ()=>import(('../love/love.module')).then(m => m.LovePageModule) },
+          { path: "word-clips", loadChildren: ()=>import(('../word-clips/word-clips.module')).then(m => m.WordClipsPageModule) },
           {
-            path: "motivation",
-             loadChildren: ()=>import(('../motivation/motivation.module')).then(m => m.MotivationPageModule)
+            path: "push-network",
+             loadChildren: ()=>import(('../push-network/push-network.module')).then(m => m.PushNetworkPageModule)
           },
           {
             path: "insight",
@@ -109,8 +109,8 @@ const routes: Routes = [
             loadChildren: ()=>import(('../requests/requests.module')).then(m => m.RequestsPageModule)
           },
           {
-            path: "verses",
-            loadChildren:()=>import(('../verses/verses.module')).then(m => m.VersesPageModule)
+            path: "daily-verse",
+            loadChildren:()=>import(('../daily-verse/daily-verse.module')).then(m => m.DailyVersePageModule)
           },
         ]
       },
@@ -132,16 +132,16 @@ const routes: Routes = [
         children: [
           {
             path: "",
-            loadChildren: "../about/about.module#AboutModule"
+            loadChildren:()=>import('../about/about.module').then(m=> m.AboutModule)
           }
         ]
       },
       {
-        path: "devotions",
+        path: "inspire-impact",
         children: [
           {
             path: "",
-            loadChildren: "../devotions/devotions.module#DevotionsPageModule"
+            loadChildren: ()=> import('../inspire-impact/inspire-impact.module').then((m)=> m.InspireImpactPageModule)
           }
         ]
       },

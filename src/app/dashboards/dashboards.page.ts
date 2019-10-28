@@ -36,21 +36,21 @@ export class DashboardsPage implements OnInit {
   navInsight() {
     this.router.navigateByUrl("/app/tabs/dashboards/insight");
   }
-  navVerses() {
-    this.router.navigateByUrl("/app/tabs/dashboards/verses");
+  navDailyVerses() {
+    this.router.navigateByUrl("/app/tabs/dashboards/daily-verse");
   }
 
-  navLove() {
-    this.router.navigateByUrl("/app/tabs/dashboards/love");
+  wordClips() {
+    this.router.navigateByUrl("/app/tabs/dashboards/word-clips");
   }
   navRequests() {
     this.router.navigateByUrl("/app/tabs/dashboards/requests");
   }
-  navMotivation() {
-    this.router.navigateByUrl("/app/tabs/dashboards/motivation");
+  navPushNetwork() {
+    this.router.navigateByUrl("/app/tabs/dashboards/push-network");
   }
-  navBookmark() {
-    this.router.navigateByUrl("/app/tabs/dashboards/bookmark");
+  navDailyNudget() {
+    this.router.navigateByUrl("/app/tabs/dashboards/daily-nudget");
   }
 
   async editProfile() {

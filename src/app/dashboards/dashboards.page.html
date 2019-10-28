@@ -13,17 +13,18 @@
     <ion-card-content>
       <ion-row>
         <ion-col size="2">
-            <div>
-                <div class="hero-avatar">
-                    <img src="../../../assets/img/appicon.png" alt="Speaker profile pic">
-                 </div>  
+          <div>
+            <div class="hero-avatar">
+              <img src="../../../assets/img/appicon.png" alt="Speaker profile pic">
             </div>
-          </ion-col>
+          </div>
+        </ion-col>
         <ion-col>
           Nazeh Abel
           <!-- avatar email address -->
           <p class="user-email">Nazehabel@gmail.com</p>
-          <ion-button size="small" class="edit-btn" shape="round" fill="outline" (click)="editProfile()">Edit Profile</ion-button>
+          <ion-button size="small" class="edit-btn" shape="round" fill="outline" (click)="editProfile()">Edit Profile
+          </ion-button>
         </ion-col>
       </ion-row>
     </ion-card-content>
@@ -43,34 +44,26 @@
       </ion-card-header>
       <!-- icons and text for navigations -->
       <ion-card-content>
-        <ion-row>
-          <ion-col (click)="navLove()">
-            <div>
+        <ion-row class="submenu">
+            <ion-col class="wrapper" (click)="navLove()">
+            <div class="inline-block-sub">
               <!-- Mini icon and text for love -->
-              <ion-fab-button size="small" color="light" class="icon-wp">
-                <ion-icon name="heart" class="love"></ion-icon>
-              </ion-fab-button>
-              <p class="text-label">Love</p>
+              <ion-icon name="heart" class="love"></ion-icon>
             </div>
+            <p class="text-label">Love</p>
           </ion-col>
-          <ion-col (click)="navPrayers()">
-            <div>
+          <ion-col class="wrapper" (click)="navPrayers()">
+            <div class="inline-block-sub">
               <!-- Mini icon and text for prayers -->
-              <ion-fab-button size="small" color="light" class="icon-wp">
-                <ion-icon name="bonfire" class="prayers"></ion-icon>
-              </ion-fab-button>
-              <p class="text-label">Prayers</p>
+              <ion-icon name="bonfire" class="prayers"></ion-icon>
             </div>
+            <p class="text-label">Prayers</p>
           </ion-col>
-          <ion-col (click)="navRequests()"> 
-            <div>
-              <!-- Mini icon and text for Requests -->
-              <ion-fab-button size="small" color="light" class="icon-wp">
-                <ion-icon name="people" class="requests"></ion-icon>
-              </ion-fab-button>
-
+          <ion-col class="wrapper" (click)="navRequests()">
+            <div class="inline-block-sub">            
+              <ion-icon name="people" class="requests"></ion-icon>              
             </div>
-            <p class="text-label">Request</p>
+            <p class="text-label">Connect</p>
           </ion-col>
         </ion-row>
       </ion-card-content>
@@ -84,43 +77,43 @@
       <!-- icons and text for navigations -->
       <ion-card-content>
         <ion-row>
-          <ion-col (click)="navInsight()">
-            <div class="inline-block">
+          <ion-col class="wrapper" (click)="navDailyNudget()">
+            <div class="inline-block daily-nudget">
               <!-- Mini icon and text for Insight -->
-              <ion-fab-button size="small" color="dark" class="icon-wp">
-                <ion-icon name="add" class="insight"></ion-icon>
-              </ion-fab-button>
+              <!-- <ion-fab-button size="small" color="dark" class="icon-wp"> -->
+              <ion-icon name="add" class="insight"></ion-icon>
+              <!-- </ion-fab-button> -->
             </div>
-            <p class="text-label">Insight</p>
+            <p class="text-label">Daily Nudget</p>
           </ion-col>
-          <ion-col (click)="navBookmark()">
-            <div class="inline-block" >
+          <ion-col class="wrapper" (click)="navDailyVerses()">
+            <div class="inline-block daily-verses">
               <!-- Mini icon and text for Verses -->
-              <ion-fab-button size="small" color="light" class="icon-wp bookmark-wp">
-                <ion-icon name="bookmark" class="bookmark"></ion-icon>
-              </ion-fab-button>
+              <!-- <ion-fab-button size="small" color="light" class="icon-wp bookmark-wp"> -->
+              <ion-icon name="bookmark" class="bookmark"></ion-icon>
+              <!-- </ion-fab-button> -->
             </div>
-            <p class="text-label">Bookmark</p>
+            <p class="text-label">Daily Verse</p>
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col (click)="navVerses()">
-            <div class="inline-block">
+          <ion-col class="wrapper" (click)="wordClips()">
+            <div class="inline-block daily-words">
               <!-- Mini icon and text for Verses -->
-              <ion-fab-button size="small" color="secondary" class="icon-wp">
-                <ion-icon name="rose" class="verses"></ion-icon>
-              </ion-fab-button>
+              <!-- <ion-fab-button size="small" color="secondary" class="icon-wp"> -->
+              <ion-icon name="rose" class="verses"></ion-icon>
+              <!-- </ion-fab-button> -->
             </div>
-            <p class="text-label">Verses</p>
+            <p class="text-label">Word Clips</p>
           </ion-col>
-          <ion-col (click)="navMotivation()">
-            <div class="inline-block">
+          <ion-col class="wrapper" (click)="navPushNetwork()">
+            <div class="inline-block  push-network">
               <!-- Mini icon and text for motivation -->
-              <ion-fab-button size="small" color="success" class="icon-wp">
-                <ion-icon name="quote" class="motivation"></ion-icon>
-              </ion-fab-button>
+              <!-- <ion-fab-button size="small" color="success" class="icon-wp"> -->
+              <ion-icon name="quote" class="motivation"></ion-icon>
+              <!-- </ion-fab-button> -->
             </div>
-            <p class="text-label">Motivation</p>
+            <p class="text-label">Push Network</p>
           </ion-col>
 
         </ion-row>

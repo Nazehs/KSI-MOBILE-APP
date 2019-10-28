@@ -1,0 +1,51 @@
+.empty-note{
+    background: url('../../assets/shapes/empty-note.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin: auto;
+  }
+  .note-empty-text{
+    font-size:1rem;
+    margin-bottom: 5px;
+    color:#666;
+    font-style: oblique;
+  }
+  .row-empty-note{
+    margin:18vh auto;
+    height: 10%;
+  }
+
+  .clipboard{
+    font-size: 30px;
+  }
+
+  .list-item{
+    --background: #ccc;
+    height: 40px;
+    line-height: 49px;
+    border-bottom: 0.5px solid #ccc;
+    padding:13px;
+
+  }
+  .list-item:last-child{    
+    border-bottom:0!important;
+
+  }
+  .note-title{
+    font-size:18px;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 10px;
+    align-self: center;
+    align-content: center;
+  }
+  .note-date{
+    float: right;
+    font-size: 12px;
+    vertical-align: middle;
+    text-align: center;
+  }

@@ -26,12 +26,7 @@
       <ellipse cx="100" cy="120" rx="228" ry="133"></ellipse>
     </svg> -->
     <form #loginForm="ngForm" class="form" validate class="form-wp">
-      <ion-row class="input-row">
-          <ion-text color="danger float-right">
-              <em [hidden]="login.username?.valid || submitted == false" padding-left>
-                username is required
-              </em>
-            </ion-text>
+      <ion-row class="input-row">         
         <ion-col>
           <div class="input-control">
             <ion-item lines="none" class="form-control">
@@ -42,6 +37,11 @@
                 clearInput required></ion-input>
             </ion-item>
           </div>
+          <ion-text color="danger float-right">
+            <em [hidden]="login.username?.valid || submitted == false" padding-left>
+              username is required
+            </em>
+          </ion-text>
         </ion-col>
       </ion-row>
       <ion-row class="input-row">

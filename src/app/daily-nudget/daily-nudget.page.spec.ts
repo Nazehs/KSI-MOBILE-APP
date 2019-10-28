@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { JourneysPage } from './journeys.page';
+import { DailyNudgetPage } from './daily-nudget.page';
 
-describe('JourneysPage', () => {
-  let component: JourneysPage;
-  let fixture: ComponentFixture<JourneysPage>;
+describe('DailyNudgetPage', () => {
+  let component: DailyNudgetPage;
+  let fixture: ComponentFixture<DailyNudgetPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JourneysPage ],
+      declarations: [ DailyNudgetPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(JourneysPage);
+    fixture = TestBed.createComponent(DailyNudgetPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

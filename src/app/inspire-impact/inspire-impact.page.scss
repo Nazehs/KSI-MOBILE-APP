@@ -1,0 +1,30 @@
+.empty-podcast-img{
+    background: url('../../assets/shapes/empty-podcast.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin: auto;
+  }
+  .podcast-empty-text{
+    font-size:1rem;
+    margin-bottom: 5px;
+    color:#666;
+    font-style: oblique;
+  }
+  .row-empty-podcast{
+    margin:18vh auto;
+    height: 10%;
+  }
+
+  .date{
+    font-size: 22px;
+    text-align: center;
+    color:#B4B4B4;
+  }
+  .description{
+    color: #B4B4B4;
+    font-size: 13px;
+  }
