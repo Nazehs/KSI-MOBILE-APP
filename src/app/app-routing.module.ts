@@ -42,6 +42,12 @@ const routes: Routes = [
   { path: 'daily-words', loadChildren: './daily-words/daily-words.module#DailyWordsPageModule' },
   { path: 'word-clips', loadChildren: './word-clips/word-clips.module#WordClipsPageModule' },
   { path: 'push-network', loadChildren: './push-network/push-network.module#PushNetworkPageModule' },
+  { path: 'podcast-details', loadChildren: './podcast-details/podcast-details.module#PodcastDetailsPageModule' },
+  { path: 'chatrom-list', loadChildren: './chatrom-list/chatrom-list.module#ChatromListPageModule' },
+  { path: 'chatrom', loadChildren: './chatrom/chatrom.module#ChatromPageModule' },
+  { path: 'create-chatroom', loadChildren: './create-chatroom/create-chatroom.module#CreateChatroomPageModule' },
+  { path: 'prayer-details', loadChildren: './prayer-details/prayer-details.module#PrayerDetailsPageModule' },
+  { path: 'note-details', loadChildren: './note-details/note-details.module#NoteDetailsPageModule' },
 
 ];
 

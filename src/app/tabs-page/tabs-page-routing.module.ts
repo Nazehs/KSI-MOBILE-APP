@@ -1,17 +1,17 @@
-import { VersesPageModule } from './../verses/verses.module';
-import { RequestsPageModule } from './../requests/requests.module';
-import { DashboardPageModule } from './../dashboard/dashboard.module';
-import { BookmarkPageModule } from './../bookmark/bookmark.module';
-import { InsightPageModule } from './../insight/insight.module';
-import { MotivationPageModule } from './../motivation/motivation.module';
-import { LovePageModule } from './../love/love.module';
-import { PrayersPageModule } from './../prayers/prayers.module';
+import { VersesPageModule } from "./../verses/verses.module";
+import { RequestsPageModule } from "./../requests/requests.module";
+import { DashboardPageModule } from "./../dashboard/dashboard.module";
+import { BookmarkPageModule } from "./../bookmark/bookmark.module";
+import { InsightPageModule } from "./../insight/insight.module";
+import { MotivationPageModule } from "./../motivation/motivation.module";
+import { LovePageModule } from "./../love/love.module";
+import { PrayersPageModule } from "./../prayers/prayers.module";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { TabsPage } from "./tabs-page";
-import { HomePage } from '../home/home.page';
+import { HomePage } from "../home/home.page";
 import { SchedulePage } from "../schedule/schedule";
-import { HomePageModule } from '../home/home.module';
+import { HomePageModule } from "../home/home.module";
 // import { PostsPage } from "../../pages/posts/posts.page";
 
 const routes: Routes = [
@@ -20,7 +20,7 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'home',
+        path: "home",
         children: [
           {
             path: "",
@@ -34,7 +34,7 @@ const routes: Routes = [
           {
             path: "",
             component: HomePage
-          },
+          }
           // {
           //   path: "single-post/:postId",
           //   loadChildren:() => import('../single-post/single-post.module').then(m => m.SinglePostPageModule)
@@ -77,7 +77,20 @@ const routes: Routes = [
       },
       {
         path: "notes",
-        loadChildren:()=>import('../notes/notes.module').then(m => m.NotesPageModule)
+        children: [
+          {
+            path: "",
+            loadChildren: () =>
+              import("../notes/notes.module").then(m => m.NotesPageModule)
+          },
+          {
+            path: "note-details",
+            loadChildren: () =>
+              import("../note-details/note-details.module").then(m => {
+                m.NoteDetailsPageModule;
+              })
+          }
+        ]
       },
       {
         path: "dashboards",
@@ -85,33 +98,82 @@ const routes: Routes = [
           {
             path: "",
             // loadChildren: "../journeys/journeys.module#JourneysPageModule"
-            loadChildren:()=>import('../dashboards/dashboards.module').then(m => m.DashboardsPageModule)
+            loadChildren: () =>
+              import("../dashboards/dashboards.module").then(
+                m => m.DashboardsPageModule
+              )
           },
           {
             path: "daily-nudget",
-            loadChildren:()=>import('../daily-nudget/daily-nudget.module').then(m => m.DailyNudgetPageModule) 
+            loadChildren: () =>
+              import("../daily-nudget/daily-nudget.module").then(
+                m => m.DailyNudgetPageModule
+              )
           },
           {
             path: "prayers",
-            loadChildren:()=>import(('../prayers/prayers.module')).then(m => m.PrayersPageModule)
+            loadChildren: () =>
+              import("../prayers/prayers.module").then(m => m.PrayersPageModule)
           },
-          { path: "word-clips", loadChildren: ()=>import(('../word-clips/word-clips.module')).then(m => m.WordClipsPageModule) },
+          {
+            path: "word-clips",
+            loadChildren: () =>
+              import("../word-clips/word-clips.module").then(
+                m => m.WordClipsPageModule
+              )
+          },
           {
             path: "push-network",
-             loadChildren: ()=>import(('../push-network/push-network.module')).then(m => m.PushNetworkPageModule)
+            children: [
+              {
+                path: "",
+                loadChildren: () =>
+                  import("../push-network/push-network.module").then(
+                    m => m.PushNetworkPageModule
+                  )
+              },
+              {
+                path: "prayer",
+                loadChildren: () =>
+                  import("../prayer-details/prayer-details.module").then(
+                    m => m.PrayerDetailsPageModule
+                  )
+              }
+            ]
           },
           {
             path: "insight",
-            loadChildren: ()=>import(('../insight/insight.module')).then(m => m.InsightPageModule)
+            loadChildren: () =>
+              import("../insight/insight.module").then(m => m.InsightPageModule)
           },
           {
             path: "requests",
-            loadChildren: ()=>import(('../requests/requests.module')).then(m => m.RequestsPageModule)
+            loadChildren: () =>
+              import("../requests/requests.module").then(
+                m => m.RequestsPageModule
+              )
+          },
+          {
+            path: "chatroom-list",
+            loadChildren: () =>
+              import("../chatrom-list/chatrom-list.module").then(
+                m => m.ChatromListPageModule
+              )
+          },
+          {
+            path: "create-chatroom",
+            loadChildren: () =>
+              import("../create-chatroom/create-chatroom.module").then(
+                m => m.CreateChatroomPageModule
+              )
           },
           {
             path: "daily-verse",
-            loadChildren:()=>import(('../daily-verse/daily-verse.module')).then(m => m.DailyVersePageModule)
-          },
+            loadChildren: () =>
+              import("../daily-verse/daily-verse.module").then(
+                m => m.DailyVersePageModule
+              )
+          }
         ]
       },
       {
@@ -132,7 +194,8 @@ const routes: Routes = [
         children: [
           {
             path: "",
-            loadChildren:()=>import('../about/about.module').then(m=> m.AboutModule)
+            loadChildren: () =>
+              import("../about/about.module").then(m => m.AboutModule)
           }
         ]
       },
@@ -141,7 +204,10 @@ const routes: Routes = [
         children: [
           {
             path: "",
-            loadChildren: ()=> import('../inspire-impact/inspire-impact.module').then((m)=> m.InspireImpactPageModule)
+            loadChildren: () =>
+              import("../inspire-impact/inspire-impact.module").then(
+                m => m.InspireImpactPageModule
+              )
           }
         ]
       },
@@ -150,7 +216,7 @@ const routes: Routes = [
         loadChildren: "./generals/generals.module#GeneralsPageModule"
       },
       { path: "plans", loadChildren: "./plans/plans.module#PlansPageModule" },
-    
+
       // { path: "plans", loadChildren: "../plans/plans.module#PlansPageModule" },
       {
         path: "generals",
@@ -164,4 +230,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule { }
+export class TabsPageRoutingModule {}

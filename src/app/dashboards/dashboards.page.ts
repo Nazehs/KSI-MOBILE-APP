@@ -43,8 +43,8 @@ export class DashboardsPage implements OnInit {
   wordClips() {
     this.router.navigateByUrl("/app/tabs/dashboards/word-clips");
   }
-  navRequests() {
-    this.router.navigateByUrl("/app/tabs/dashboards/requests");
+  navConnects() {
+    this.router.navigateByUrl("/app/tabs/dashboards/chatroom-list");
   }
   navPushNetwork() {
     this.router.navigateByUrl("/app/tabs/dashboards/push-network");

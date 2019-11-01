@@ -19,7 +19,9 @@ export class TutorialPage {
     public menu: MenuController,
     public router: Router,
     public storage: Storage
-  ) {}
+  ) {
+    
+  }
 
   startApp() {
     this.router

@@ -1,14 +1,22 @@
 import { Component } from '@angular/core';
-
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import * as firebase from 'firebase';
 
+const config = {
+  apiKey: 'AIzaSyA8TfkyZs_m_bfZYPy1Byo2Z9wm-i4ktis',
+  authDomain: 'kingdomsupportinitiatives.firebaseapp.com',
+  databaseURL: 'https://kingdomsupportinitiatives.firebaseio.com/',
+  projectId: 'kingdomsupportinitiatives',
+  storageBucket: 'kingdomsupportinitiatives.appspot.com',
+};
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
+
 export class AppComponent {
   appPages = [
     {
@@ -63,7 +71,7 @@ export class AppComponent {
       icon: "information-circle"
     }
   ];
-
+ 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -77,5 +85,7 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+    firebase.initializeApp(config);
   }
+  
 }
