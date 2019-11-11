@@ -1,33 +1,13 @@
-.empty-note{
-    background: url('../../assets/shapes/empty-note.svg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    margin: auto;
-  }
-  .note-empty-text{
-    font-size:1rem;
-    margin-bottom: 5px;
-    color:#666;
-    font-style: oblique;
-  }
-  .row-empty-note{
-    margin:18vh auto;
-    height: 10%;
-  }
-
-  .clipboard{
+ .clipboard{
     font-size: 30px;
   }
 
   .list-item{
-    --background: #ccc;
+    --background: #3bc7c41f;
+    background: #3bc7c41f;
     height: 40px;
     line-height: 49px;
-    border-bottom: 0.5px solid #ccc;
+    border-bottom: 0.5px solid #3bc7c41f;
     padding:13px;
 
   }
@@ -48,4 +28,14 @@
     font-size: 12px;
     vertical-align: middle;
     text-align: center;
+    color: var(--ion-color-primary);
+  }
+
+  .ion-activatable {
+    position: relative;
+    overflow: hidden;
+  }
+  .isWhite{
+    --background:#fff;
+    background:#fff;
   }

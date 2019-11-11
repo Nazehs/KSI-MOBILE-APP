@@ -11,46 +11,17 @@
 <ion-content>
   <ion-row>
     <ion-col>
-      <ion-card>
+      <ion-card *ngFor="let verse of verses">
         <ion-item>
           <ion-label>
-            <ion-text>Mat 3:15</ion-text>
+            <ion-text>{{verse.reference}}</ion-text>
             <p style="display: inline-block;float: right;">
-              <ion-button fill="outline">30 June, 2019</ion-button>
+              <ion-button fill="outline">{{verse.createdDate | date}}</ion-button>
             </p>
           </ion-label>
         </ion-item>
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
-        </ion-card-content>
-      </ion-card>
-      <ion-card>
-        <ion-item>
-          <ion-label>
-            <ion-text>Mat 3:15</ion-text>
-            <p style="display: inline-block;float: right;">
-              <ion-button fill="outline">30 June, 2019</ion-button>
-            </p>
-          </ion-label>
-        </ion-item>
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
-        </ion-card-content>
-      </ion-card>
-      <ion-card>
-        <ion-item>
-          <ion-label>
-            <ion-text>Mat 3:15</ion-text>
-            <p style="display: inline-block;float: right;">
-              <ion-button fill="outline">30 June, 2019</ion-button>
-            </p>
-          </ion-label>
-        </ion-item>
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        <ion-card-content [innerHTML]="verse.content">
+          
         </ion-card-content>
       </ion-card>
     </ion-col>

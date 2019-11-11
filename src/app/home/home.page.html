@@ -39,15 +39,15 @@
     <ion-row class="ion-align-items-stretch"  #postList [hidden]="shownSessions === 0">
       <ion-col size="12" size-md="6" *ngFor="let post of posts" [hidden]="post.hide">
         <!-- post item -->
-        <ion-item-sliding>
+        <ion-item-sliding #slidingItem>
           <div>  
             <ion-item detail lines="inset" routerLink="/single-post/{{post.id}}">
               <ion-text>
                   <h4 class="devotion-topic">
-                      The Amazing grace that saves
+                      {{post.title}}
                     </h4>
                     <p class="devotion-date">
-                        20th September, 2019
+                       {{post.dateCreated | date}}
                          <!-- {{post.date}}  -->
                     </p>
                     <p class="devotion-excerpt">
@@ -56,7 +56,7 @@
               </ion-text>
             </ion-item>
             <ion-item-options>
-                <ion-item-option color="favorite" (click)="addFavorite(slidingItem, post)" *ngIf="segment === 'all'">
+                <ion-item-option  (click)="addFavorite(slidingItem, post)" *ngIf="segment === 'all'">
                   Favorite
                 </ion-item-option>
                 <ion-item-option color="danger" (click)="removeFavorite(slidingItem, post, 'Remove Favorite')" *ngIf="segment === 'favorites'">

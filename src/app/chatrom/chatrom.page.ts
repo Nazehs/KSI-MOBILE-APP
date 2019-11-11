@@ -2,8 +2,10 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 // import { RoomPage } from '../room/room';
 import * as firebase from 'Firebase';
 // import {Content} from "@ionic/angular";
-import { NavParams, NavController  } from '@ionic/angular';
-import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { NavParams, NavController, IonContent,  } from '@ionic/angular';
+
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-chatrom',
@@ -11,15 +13,20 @@ import { Content } from '@angular/compiler/src/render3/r3_ast';
   styleUrls: ['./chatrom.page.scss'],
 })
 export class ChatromPage implements OnInit {
-  @ViewChild(Content,{ static: false }) content: Content;
+  @ViewChild("scrollElement",{ static: false }) content: IonContent;
+
   data = { type:'', nickname:'', message:'' };
   chats = [];
   roomkey:string;
   nickname:string;
   offStatus:boolean = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.roomkey = this.navParams.get("key") as string;
-    this.nickname = this.navParams.get("nickname") as string;
+  constructor(public navCtrl: NavController, private route: ActivatedRoute) {
+    if(this.route.snapshot.data['roomKey']){
+      const room = this.route.snapshot.data['roomKey'];
+      console.log(room);
+      this.roomkey = room.key;
+      this.nickname = "Nazehs";
+    }
     this.data.type = 'message';
     this.data.nickname = this.nickname;
   
@@ -37,16 +44,13 @@ export class ChatromPage implements OnInit {
       this.chats = snapshotToArray(resp);
       setTimeout(() => {
         if(this.offStatus === false) {
-          this.content.scrollToBottom(300);
+          this.content.scrollToBottom(30);
         }
       }, 1000);
     });
   }
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    
-  }
+  ngOnInit(): void {};
+
 
   sendMessage() {
     let newData = firebase.database().ref('chatrooms/'+this.roomkey+'/chats').push();
@@ -69,11 +73,8 @@ export class ChatromPage implements OnInit {
       sendDate:Date()
     });
   
-    this.offStatus = true;
-  
-    this.navCtrl.setRoot(RoomPage, {
-      nickname:this.nickname
-    });
+    this.offStatus = true;  
+    this.navCtrl.navigateRoot("/app/tabs/dashboards/chatroom-list");
   }
 }
 

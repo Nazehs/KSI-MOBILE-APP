@@ -1,9 +1,44 @@
-<ion-header>
+<ion-header translucent>
   <ion-toolbar>
-    <ion-title>podcast-details</ion-title>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>{{'Tille'}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content fullscreen>
+   <ion-grid  class="videoGrid">
+     <ion-row>
+       <ion-col class="videoThumbnai">
+          <ion-card>
+            
+            <ion-card-content>
+                <img src="../../assets/img/speakers/lion.jpg" />
+              </ion-card-content>
+            </ion-card>
+       </ion-col>
+     </ion-row>
+     <ion-row class="ion-text-center" style="background:#ccc">
+       <ion-col>
+         <div class="">
+           <ion-button fill="outline">
+              <ion-icon name="play"></ion-icon>&nbsp;
+              <span>Play</span>
+           </ion-button>
+         </div>
+       </ion-col>
+       <ion-col>
+          <div class="">            
+            <ion-button fill="outline">
+               <ion-icon name="pause"></ion-icon> &nbsp;
+              <span>Pause</span>
+            </ion-button>
+          </div>
+        </ion-col>
+        <!-- <ion-col>
+            <div class="">
+              <span>Pause</span>
+            </div>
+          </ion-col> -->
+     </ion-row>
+   </ion-grid>
 </ion-content>

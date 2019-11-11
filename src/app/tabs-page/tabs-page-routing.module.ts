@@ -1,38 +1,39 @@
-import { VersesPageModule } from "./../verses/verses.module";
-import { RequestsPageModule } from "./../requests/requests.module";
-import { DashboardPageModule } from "./../dashboard/dashboard.module";
-import { BookmarkPageModule } from "./../bookmark/bookmark.module";
-import { InsightPageModule } from "./../insight/insight.module";
-import { MotivationPageModule } from "./../motivation/motivation.module";
-import { LovePageModule } from "./../love/love.module";
-import { PrayersPageModule } from "./../prayers/prayers.module";
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { TabsPage } from "./tabs-page";
-import { HomePage } from "../home/home.page";
-import { SchedulePage } from "../schedule/schedule";
-import { HomePageModule } from "../home/home.module";
+import { VersesPageModule } from './../verses/verses.module';
+import { RequestsPageModule } from './../requests/requests.module';
+import { DashboardPageModule } from './../dashboard/dashboard.module';
+import { BookmarkPageModule } from './../bookmark/bookmark.module';
+import { InsightPageModule } from './../insight/insight.module';
+import { MotivationPageModule } from './../motivation/motivation.module';
+import { LovePageModule } from './../love/love.module';
+import { PrayersPageModule } from './../prayers/prayers.module';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { TabsPage } from './tabs-page';
+import { HomePage } from '../home/home.page';
+import { SchedulePage } from '../schedule/schedule';
+import { HomePageModule } from '../home/home.module';
+import { DataResolverService } from 'src/providers/resolverData';
 // import { PostsPage } from "../../pages/posts/posts.page";
 
 const routes: Routes = [
   {
-    path: "tabs",
+    path: 'tabs',
     component: TabsPage,
     children: [
       {
-        path: "home",
+        path: 'home',
         children: [
           {
-            path: "",
+            path: '',
             component: HomePage
           }
         ]
       },
       {
-        path: "home",
+        path: 'home',
         children: [
           {
-            path: "",
+            path: '',
             component: HomePage
           }
           // {
@@ -42,185 +43,209 @@ const routes: Routes = [
         ]
       },
       {
-        path: "schedule",
+        path: 'schedule',
         children: [
           {
-            path: "",
+            path: '',
             component: SchedulePage
           },
           {
-            path: "session/:sessionId",
+            path: 'session/:sessionId',
             loadChildren:
-              "../session-detail/session-detail.module#SessionDetailModule"
+              '../session-detail/session-detail.module#SessionDetailModule'
           }
         ]
       },
       {
-        path: "speakers",
+        path: 'speakers',
         children: [
           {
-            path: "",
+            path: '',
             loadChildren:
-              "../speaker-list/speaker-list.module#SpeakerListModule"
+              '../speaker-list/speaker-list.module#SpeakerListModule'
           },
           {
-            path: "session/:sessionId",
+            path: 'session/:sessionId',
             loadChildren:
-              "../session-detail/session-detail.module#SessionDetailModule"
+              '../session-detail/session-detail.module#SessionDetailModule'
           },
           {
-            path: "speaker-details/:speakerId",
+            path: 'speaker-details/:speakerId',
             loadChildren:
-              "../speaker-detail/speaker-detail.module#SpeakerDetailModule"
+              '../speaker-detail/speaker-detail.module#SpeakerDetailModule'
           }
         ]
       },
       {
-        path: "notes",
+        path: 'notes',
         children: [
           {
-            path: "",
+            path: '',
             loadChildren: () =>
-              import("../notes/notes.module").then(m => m.NotesPageModule)
+              import('../notes/notes.module').then(m => m.NotesPageModule)
           },
           {
-            path: "note-details",
+            path: 'note-details/:noteid',
             loadChildren: () =>
-              import("../note-details/note-details.module").then(m => {
-                m.NoteDetailsPageModule;
-              })
+              import('../note-details/note-details.module').then(m =>m.NoteDetailsPageModule)
+          },
+          {
+           path:'create-note',
+           loadChildren:()=>import('../create-note/create-note.module').then((m)=>m.CreateNotePageModule )
           }
         ]
       },
       {
-        path: "dashboards",
+        path: 'dashboards',
         children: [
           {
-            path: "",
-            // loadChildren: "../journeys/journeys.module#JourneysPageModule"
+            path: '',
             loadChildren: () =>
-              import("../dashboards/dashboards.module").then(
+              import('../dashboards/dashboards.module').then(
                 m => m.DashboardsPageModule
               )
           },
           {
-            path: "daily-nudget",
+            path: 'daily-nudget',
             loadChildren: () =>
-              import("../daily-nudget/daily-nudget.module").then(
+              import('../daily-nudget/daily-nudget.module').then(
                 m => m.DailyNudgetPageModule
               )
           },
           {
-            path: "prayers",
+            path: 'prayers',
             loadChildren: () =>
-              import("../prayers/prayers.module").then(m => m.PrayersPageModule)
+              import('../prayers/prayers.module').then(m => m.PrayersPageModule)
           },
           {
-            path: "word-clips",
+            path: 'word-clips',
             loadChildren: () =>
-              import("../word-clips/word-clips.module").then(
+              import('../word-clips/word-clips.module').then(
                 m => m.WordClipsPageModule
               )
           },
           {
-            path: "push-network",
+            path: 'push-network',
             children: [
               {
-                path: "",
+                path: '',
                 loadChildren: () =>
-                  import("../push-network/push-network.module").then(
+                  import('../push-network/push-network.module').then(
                     m => m.PushNetworkPageModule
                   )
               },
               {
-                path: "prayer",
+                path: 'prayer',
                 loadChildren: () =>
-                  import("../prayer-details/prayer-details.module").then(
+                  import('../prayer-details/prayer-details.module').then(
                     m => m.PrayerDetailsPageModule
                   )
               }
             ]
           },
           {
-            path: "insight",
+            path: 'insight',
             loadChildren: () =>
-              import("../insight/insight.module").then(m => m.InsightPageModule)
+              import('../insight/insight.module').then(m => m.InsightPageModule)
           },
           {
-            path: "requests",
+            path: 'requests',
             loadChildren: () =>
-              import("../requests/requests.module").then(
+              import('../requests/requests.module').then(
                 m => m.RequestsPageModule
               )
           },
           {
-            path: "chatroom-list",
-            loadChildren: () =>
-              import("../chatrom-list/chatrom-list.module").then(
-                m => m.ChatromListPageModule
-              )
+            path: 'chatroom-list',
+            children:[
+              {
+                path:'',
+                loadChildren: () =>
+                  import('../chatrom-list/chatrom-list.module').then(
+                    m => m.ChatromListPageModule
+                  )
+              },
+              {
+                path:'chatroom/:key',
+                resolve:{
+                  roomKey: DataResolverService
+                },
+
+                loadChildren: () =>
+                  import('../chatrom/chatrom.module').then(
+                    m => m.ChatromPageModule
+                  )
+              }
+            ]
           },
           {
-            path: "create-chatroom",
+            path: 'create-chatroom',
             loadChildren: () =>
-              import("../create-chatroom/create-chatroom.module").then(
+              import('../create-chatroom/create-chatroom.module').then(
                 m => m.CreateChatroomPageModule
               )
           },
           {
-            path: "daily-verse",
+            path: 'daily-verse',
             loadChildren: () =>
-              import("../daily-verse/daily-verse.module").then(
+              import('../daily-verse/daily-verse.module').then(
                 m => m.DailyVersePageModule
               )
           }
         ]
       },
       {
-        path: "settings",
-        loadChildren: "../settings/settings.module#SettingsPageModule"
+        path: 'settings',
+        loadChildren: '../settings/settings.module#SettingsPageModule'
       },
       {
-        path: "bookmark",
+        path: 'bookmark',
         children: [
           {
-            path: "",
-            loadChildren: "../bookmark/bookmark.module#BookmarkPageModule"
+            path: '',
+            loadChildren: '../bookmark/bookmark.module#BookmarkPageModule'
           }
         ]
       },
       {
-        path: "about",
+        path: 'about',
         children: [
           {
-            path: "",
+            path: '',
             loadChildren: () =>
-              import("../about/about.module").then(m => m.AboutModule)
+              import('../about/about.module').then(m => m.AboutModule)
           }
         ]
       },
       {
-        path: "inspire-impact",
+        path: 'inspire-impact',
         children: [
           {
-            path: "",
+            path: '',
             loadChildren: () =>
-              import("../inspire-impact/inspire-impact.module").then(
+              import('../inspire-impact/inspire-impact.module').then(
                 m => m.InspireImpactPageModule
+              )
+          },
+          {
+            path: 'podcast-details',
+            loadChildren: () =>
+              import('../podcast-details/podcast-details.module').then(
+                m => m.PodcastDetailsPageModule
               )
           }
         ]
       },
       {
-        path: "generals",
-        loadChildren: "./generals/generals.module#GeneralsPageModule"
+        path: 'generals',
+        loadChildren: './generals/generals.module#GeneralsPageModule'
       },
-      { path: "plans", loadChildren: "./plans/plans.module#PlansPageModule" },
+      { path: 'plans', loadChildren: './plans/plans.module#PlansPageModule' },
 
       // { path: "plans", loadChildren: "../plans/plans.module#PlansPageModule" },
       {
-        path: "generals",
-        loadChildren: "./generals/generals.module#GeneralsPageModule"
+        path: 'generals',
+        loadChildren: './generals/generals.module#GeneralsPageModule'
       }
     ]
   }

@@ -5,6 +5,7 @@ import { NgForm} from '@angular/forms';
 import { UserData } from '../../providers/user-data';
 
 import { userSignUp } from '../../interfaces/user-options';
+import { UserAuthService } from 'src/providers/User.Auth.Service';
 
 @Component({
   selector: 'mainsignup',
@@ -19,7 +20,7 @@ export class MainsignupPage implements OnInit {
      passwordComfirm:''
    }
 
-  constructor(public userData:UserData,public router:Router) { }
+  constructor(public userData:UserData,public router:Router, private userService:UserAuthService) { }
 
   ngOnInit() {
   }
@@ -28,16 +29,25 @@ export class MainsignupPage implements OnInit {
 
   appSignUp(forms:NgForm){
         if(forms.valid){
-          this.userData.signup(this.signsUps.fullName,this.signsUps.password);
-          // this.userData.signup(this.signsUps.email);
-          // this.userData.signup();
-          // navigate to the schedules
-          this.router.navigateByUrl('/app/tabs/posts');
+          console.log(this.signsUps);
+          if (this.signsUps.password === this.signsUps.passwordComfirm){
+            this.userData.signup(this.signsUps.fullName,this.signsUps.password);
+            console.log('====================================');
+            console.log(this.signsUps);
+            console.log('====================================');
+           
+            
+            // navigate to the homepage
+            this.router.navigateByUrl('/app/tabs/home');
+            
+          }else{
+            console.log('====================================');
+            console.log('password missmatch');
+            console.log('====================================');
+          }
+        }else{
+          return ;
         }
-    console.log(forms);
-    // if (this.forms.password === this.forms.passwordComfirm){
-
-    // }
   }
 
   // redirect to login page

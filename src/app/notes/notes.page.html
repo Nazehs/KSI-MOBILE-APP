@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-buttons class="clipboard" slot="end">
+    <ion-buttons class="clipboard" (click)="createNote()"  slot="end">
       <ion-icon name="clipboard"></ion-icon>
     </ion-buttons>
     <ion-title>Notes</ion-title>
@@ -12,32 +12,14 @@
 
 <ion-content>
   <div>
-    <div class="list-item" style="background:#F6F1F1; height: 65px; padding:10px">
-      <ion-text class="note-title">Naming it later</ion-text>
-      <ion-text class="note-date">20 June, 2019</ion-text>
-    </div>
-    <div class="list-item" style="background:#fff; height: 65px;padding:10px">
-      <ion-text class="note-title">Naming it later</ion-text>
-      <ion-text class="note-date">20 June, 2019</ion-text>
-    </div>
-
-    <div class="list-item" style="background:#F6F1F1; height: 65px; padding:10px">
-      <ion-text class="note-title">Naming it later</ion-text>
-      <ion-text class="note-date">20 June, 2019</ion-text>
-    </div>
-
-    <div class="list-item" style="background:#fff; height: 65px;padding:13px">
-      <ion-text class="note-title">Naming it later last vvv<i class="fab fa-lastfm-square"></i></ion-text>
-      <ion-text class="note-date">20 June, 2019</ion-text>
-    </div>
-    <div class="list-item" style="background:#F6F1F1; height: 65px; padding:10px">
-      <ion-text class="note-title">Naming it later</ion-text>
-      <ion-text class="note-date">20 June, 2019</ion-text>
-    </div>
-
-    <div class="list-item" style="background:#fff; height: 65px;padding:10px">
-      <ion-text class="note-title">Naming it later last<i class="fab fa-lastfm-square"></i></ion-text>
-      <ion-text class="note-date">20 June, 2019</ion-text>
+    <div class="list-item ion-activatable" [ngClass]="getClass(noteIndex)"  *ngFor="let note of notes;  let noteIndex = index" (click)="noteDetails(note, note.createdDate)" style="height: 65px; padding:10px">
+      <ion-text class="note-title">
+        {{note.title}}
+      </ion-text>
+      <ion-text class="note-date">
+        {{note.createdDate | date}}
+      </ion-text>
+      <ion-ripple-effect></ion-ripple-effect>
     </div>
   </div>
   <!-- this will show up when there is no note content -->
@@ -51,7 +33,7 @@
       </ion-col>
     </ion-row>
   </div> -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab vertical="bottom" (click)="createNote()"  color="primary"  horizontal="end" slot="fixed">
       <ion-fab-button>
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>

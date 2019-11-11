@@ -1,0 +1,38 @@
+
+  .post-detail{
+    padding-top: 0!important;
+  }
+  .wrapper{
+    margin-top: -17px;
+  }
+  .post-detail ion-text {
+    color: #60646b;
+    // color:#999;
+    text-align: justify;
+    letter-spacing: 0;
+    word-spacing: -1px;
+    word-break: break-word;
+    line-height: 1.7;
+    font-size: small;
+  }
+  *{
+    font-family: 'Montserrat'
+  }
+  ion-title{
+    padding-left: 0;
+    text-transform: capitalize;
+  }
+  ion-icon{
+      font-size: 21px;
+  }
+  
+  .post-content{
+    margin-top: -22px;
+  }
+  .post-content ion-text{
+    color: #CCCCCC;
+    font-size: 16px;
+    font-family: 'Montserrat'
+  }
+
+  

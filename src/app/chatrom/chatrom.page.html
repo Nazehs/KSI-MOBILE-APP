@@ -1,20 +1,21 @@
 <ion-header>
-  <ion-navbar>
+  <ion-toolbar>
+    <ion-back-button defaultHref="/app/tabs/dashboards/chatroom-list" slot="start"></ion-back-button>
     <ion-title>
-      Ionic Firebase Chat
+      Chatroom
     </ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="exitChat()">
+    <ion-buttons slot="end">
+      <ion-button icon-only (click)="exitChat()">
         <ion-icon name="exit"></ion-icon>
-      </button>
+      </ion-button>
     </ion-buttons>
-  </ion-navbar>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content #scrollElement>
   <ion-list>
-    <ion-item *ngFor="let chat of chats" no-lines>
-      <div class="chat-status" text-center *ngIf="chat.type==='join'||chat.type==='exit';else message">
+    <ion-item *ngFor="let chat of chats"  lines="none">
+      <div class="chat-status ion-text-center"  *ngIf="chat.type==='join'||chat.type==='exit';else message">
         <span class="chat-date">{{chat.sendDate | date:'short'}}</span>
         <span class="chat-content-center">{{chat.message}}</span>
       </div>
@@ -23,14 +24,14 @@
           <div class="right-bubble">
             <span class="msg-name">Me</span>
             <span class="msg-date">{{chat.sendDate | date:'short'}}</span>
-            <p text-wrap>{{chat.message}}</p>
+            <p  class="ion-text-wrap">{{chat.message}}</p>
           </div>
         </div>
-        <div class="chat-message" text-left *ngIf="chat.user !== nickname">
+        <div class="chat-message ion-text-left"  *ngIf="chat.user !== nickname">
           <div class="left-bubble">
             <span class="msg-name">{{chat.user}}</span>
             <span class="msg-date">{{chat.sendDate | date:'short'}}</span>
-            <p text-wrap>{{chat.message}}</p>
+            <p class="ion-text-wrap">{{chat.message}}</p>
           </div>
         </div>
       </ng-template>
@@ -41,10 +42,10 @@
 <ion-footer>
   <ion-grid>
     <ion-row>
-      <ion-col col-10>
+      <ion-col size="10">
         <ion-input type="text" placeholder="Type a message" [(ngModel)]="data.message" name="message"></ion-input>
       </ion-col>
-      <ion-col col-2 (click)="sendMessage()">
+      <ion-col size="2" (click)="sendMessage()">
         <ion-icon name="paper-plane"></ion-icon>
       </ion-col>
     </ion-row>

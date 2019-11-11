@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/tabs/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ post.title }}</ion-title>
+    <ion-title>{{ post?.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,25 +14,25 @@
         <p class="date-single-post">
           <ion-row>
             <ion-col size="8">
-              <span> 20th September, 2019</span>
+              <span>{{post?.dateCreated | date}}</span>
             </ion-col>
             <ion-col size="4">
-              <li class="devotion-length">{{getDevotionLength( post.body)}} &nbsp; Min Read</li>
+              <li class="devotion-length">{{getDevotionLength( post?.devotion)}} &nbsp; Min Read</li>
             </ion-col>
           </ion-row>
         </p>
       </ion-text>
-      <h3 class="post-title">{{post.title}}</h3>
+      <h3 class="post-title">{{post?.title}}</h3>
       <p class="post-reference">
-        Reference: Mat. 12:16, John 3:16
+        {{post?.reference}}
       </p>
     </div>
   </div>
   <!-- main post content -->
   <ion-grid class="no-padding">
     <ion-row class="post-content" *ngIf="post">
-      <ion-text>
-        {{ post.body }}
+      <ion-text [innerHTML]="post?.devotion " class="devotionContent">
+        <!-- {{ post?.devotion }} -->
             </ion-text>
     </ion-row>
   </ion-grid>

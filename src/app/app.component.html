@@ -15,7 +15,7 @@
       <div class="sk-circle12 sk-child"></div>
     </div>
 </div>
-<ion-app>
+<ion-app [class.dark-theme]="dark">
 <ion-split-pane>
 
   <ion-menu>
@@ -80,23 +80,23 @@
           Account
         </ion-list-header>
         <!-- dashboard div  -->
-        <!-- <ion-menu-toggle auto-hide="false">
+        <ion-menu-toggle auto-hide="false">
           <ion-item routerLink="/dashboard">
             <ion-icon slot="start" name="stats"></ion-icon>
             <ion-label>
               Dashboard
             </ion-label>
           </ion-item>
-        </ion-menu-toggle> -->
+        </ion-menu-toggle> 
         <!-- // dashboard end  -->
-        <!-- <ion-menu-toggle auto-hide="false">
+         <ion-menu-toggle auto-hide="false">
           <ion-item routerLink="/posts">
             <ion-icon slot="start" name="log-in"></ion-icon>
             <ion-label>
               Posts
             </ion-label>
           </ion-item>
-        </ion-menu-toggle> -->
+        </ion-menu-toggle>
         <!-- login div  -->
         <ion-menu-toggle auto-hide="false">
           <ion-item routerLink="/mainlogin">
@@ -129,7 +129,7 @@
         <!-- end of support div -->
       </ion-list>
 
-      <!-- <ion-list>
+      <ion-list>
         <ion-list-header>
           Tutorial
         </ion-list-header>
@@ -139,7 +139,7 @@
             <ion-label>Show Tutorial</ion-label>
           </ion-item>
         </ion-menu-toggle>
-      </ion-list> -->
+      </ion-list>
     </ion-content>
   </ion-menu>
 

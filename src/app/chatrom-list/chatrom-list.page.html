@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-back-button slot="start"></ion-back-button>
+      <ion-back-button defaultHref="/app/tabs/dashboards" slot="start"></ion-back-button>
     <ion-title>Chat Rooms</ion-title>
       <ion-buttons slot="end">
           <ion-button slot="end" icon-only (click)="addRoom()">
@@ -13,7 +13,7 @@
 
 <ion-content class="ion-padding">
   <ion-list>
-    <ion-item *ngFor="let room of rooms" (click)="joinRoom(room.key)">
+    <ion-item *ngFor="let room of rooms" (click)="joinRoom(room.key, room.roomname)">
       <ion-text >
         {{room?.roomname}}
       </ion-text>

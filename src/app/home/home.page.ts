@@ -12,6 +12,7 @@ import {
 import { ScheduleFilterPage } from "../schedule-filter/schedule-filter";  
 import { KsiSampleData } from "../../providers/ksi-sample-data";
 import { UserData } from "../../providers/user-data";
+import { log } from 'util';
 
 @Component({
   selector: 'app-home',
@@ -36,7 +37,7 @@ export class HomePage implements OnInit {
   confDate: string;
   segment = "all";
   excludeTracks: any = [];
-
+  isloggedIn;
   constructor(
     public actionSheetCtrl: ActionSheetController,
     public confData: KsiSampleData,
@@ -54,6 +55,11 @@ export class HomePage implements OnInit {
     // this.itemColor();
   }
 
+  ionViewWillEnter(){
+
+   this.isloggedIn = this.user.isLoggedIn();
+   
+  }
   updatePosts() {
     if (this.postList) {
       //  closing all open sliding items when the posts updates
@@ -114,7 +120,7 @@ export class HomePage implements OnInit {
       // checking for the post author or title
       if ((post.author && postSearch) || (post.title && postSearch)) {
         if (
-          post.author.toLowerCase().indexOf(postSearch.toLowerCase()) > -1 ||
+          // post.author.toLowerCase().indexOf(postSearch.toLowerCase()) > -1 ||
           post.title.toLowerCase().indexOf(postSearch.toLowerCase()) > -1
         ) {
           return true;
@@ -126,29 +132,11 @@ export class HomePage implements OnInit {
     console.log(postSearch, this.postsLoaded.length);
   }
 
-  itemColor() {
-    this.colors = [
-      "#ac282b",
-      "#8e8d93",
-      "#fe4c52",
-      "#fd8b2d",
-      "#fed035",
-      "#69bb7b",
-      "#3bc7c4",
-      "#b16be3",
-      "#6600cc"
-    ];
-    for (let color in this.colors) {
-      this.colors = this.colors[color];
-      console.log("color:", this.colors[color]);
-    }
-  }
-
   async addFavorite(slidingItem: HTMLIonItemSlidingElement, sessionData: any) {
     if (this.user.hasFavorite(sessionData.title)) {
       // woops, they already favorited it! What shall we do!?
       // prompt them to remove it
-      this.removeFavorite(slidingItem, sessionData, "Favorite already added");
+      this.removeFavorite(slidingItem, sessionData, "Devotion Already Added To Favorites");
     } else {
       // remember this session as a user favorite
       this.user.addFavorite(sessionData.title);
@@ -178,7 +166,7 @@ export class HomePage implements OnInit {
   ) {
     const alert = await this.alertCtrl.create({
       header: title,
-      message: "Would you like to remove this session from your favorites?",
+      message: "Would you like to remove this devotion from your favorites?",
       buttons: [
         {
           text: "Cancel",
@@ -192,11 +180,12 @@ export class HomePage implements OnInit {
           text: "Remove",
           handler: () => {
             // they want to remove this session from their favorites
-            this.user.removeFavorite(sessionData.name);
+            this.user.removeFavorite(sessionData.title);
             this.updatePosts();
 
             // close the sliding item and hide the option buttons
             slidingItem.close();
+            
           }
         }
       ]

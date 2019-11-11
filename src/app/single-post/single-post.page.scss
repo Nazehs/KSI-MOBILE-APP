@@ -2,13 +2,13 @@
   max-width: 140px;
   border-radius: 50%;
 }
-.post-detail{
-  padding-top: 0!important;
+.post-detail {
+  padding-top: 0 !important;
 }
-.wrapper{
+.wrapper {
   margin-top: -17px;
 }
-.author-name{
+.author-name {
   font-size: 16px;
 }
 .post-detail ion-text {
@@ -21,16 +21,16 @@
   line-height: 1.7;
   font-size: small;
 }
-ion-avatar{
-  margin-right:8px;
+ion-avatar {
+  margin-right: 8px;
 }
 .footer-icons {
   height: 37px;
 }
 
-.devotion-length{
-  color:var(--primary-color);
-  color:#56CCF2;
+.devotion-length {
+  color: var(--primary-color);
+  color: #56ccf2;
 }
 
 .show-favorite {
@@ -38,25 +38,25 @@ ion-avatar{
 }
 .favourite {
   // float: left;
-  text-align: center!important;
+  text-align: center !important;
 }
-*{
-  font-family: 'Montserrat'
+* {
+  font-family: "Montserrat";
 }
-ion-title{
+ion-title {
   padding-left: 0;
   text-transform: capitalize;
 }
-.date-single-post{
-  color: #CCCCCC
+.date-single-post {
+  color: #cccccc;
 }
-.post-reference{
-  color: #56CCF2;
+.post-reference {
+  color: #56ccf2;
   text-align: left;
 }
-.post-title{
+.post-title {
   text-transform: uppercase;
-  text-align: left;
+  text-align: le  ft;
   margin-top: -17px;
   margin-bottom: -13px;
   font-style: normal;
@@ -64,17 +64,22 @@ ion-title{
   font-size: 18px;
   color: #999;
 }
-.post-content{
-  margin-top: -3px;
+.post-content {
+  margin-top: -25px;
 }
-.post-content ion-text{
-  color: #CCCCCC;
+.post-content p {
+  padding: 0;
+  margin: 0 !important;
+  margin-block-start:0;
+}
+.post-content ion-text {
+  color: #cccccc;
   font-size: 16px;
-  font-family: 'Montserrat'
+  font-family: "Montserrat";
 }
 .share {
   // float: left;
-  text-align: center!important;
+  text-align: center !important;
 }
 
 .icon-heart-empty {

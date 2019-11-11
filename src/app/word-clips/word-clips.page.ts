@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAuthService } from 'src/providers/User.Auth.Service';
 
 @Component({
   selector: 'app-word-clips',
@@ -7,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WordClipsPage implements OnInit {
 
-  constructor() { }
-
+  
+  wordClips:any = []
+  constructor(private service:UserAuthService) {
+     this.service.getWordCLips().subscribe(response => {
+       this.wordClips = response['data'];
+       console.log(this.wordClips);
+      });
+   }
   ngOnInit() {
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAuthService } from 'src/providers/User.Auth.Service';
 
 @Component({
   selector: 'app-daily-nudget',
@@ -7,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DailyNudgetPage implements OnInit {
 
-  constructor() { }
-
+  nudgets:any = []
+  constructor(private service:UserAuthService) {
+     this.service.getDailyNuget().subscribe(response => {
+       this.nudgets = response['data'];
+       console.log(this.nudgets);
+      });
+   }
   ngOnInit() {
   }
 

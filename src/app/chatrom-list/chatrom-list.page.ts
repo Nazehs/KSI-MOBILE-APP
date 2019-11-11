@@ -3,6 +3,7 @@ import * as firebase from 'Firebase';
 import { NavController, NavParams } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ChatromPage } from '../chatrom/chatrom.page';
+import { UserAuthService } from 'src/providers/User.Auth.Service';
 
 @Component({
   selector: 'app-chatrom-list',
@@ -13,7 +14,7 @@ export class ChatromListPage implements OnInit {
   rooms = [];
   ref =  firebase.database().ref('chatrooms/');
   
-  constructor(private router: Router, public navCtrl: NavController) {
+  constructor(private router: Router, private navCtrl: NavController, private dataservice: UserAuthService ) {
     console.log(this.ref);
     this.ref.on('value', resp => {
       this.rooms = [];
@@ -27,14 +28,16 @@ export class ChatromListPage implements OnInit {
 
   addRoom(){
     this.router.navigateByUrl("/app/tabs/dashboards/create-chatroom");
-    // this.router.navigate([''])
   }
   
-  joinRoom(key) {
-    // this.navCtrl.setRoot(ChatromPage, {
-    //   key:key,
-    //   nickname:this.navParams.get("nickname")
-    // });
+  joinRoom(key, roomName) {
+    const room ={
+      key:key,
+      roomname: roomName
+    }
+  
+    this.dataservice.setData(key, room);    
+    this.router.navigate(["/app/tabs/dashboards/chatroom-list/chatroom/"+key]);
   }
 
   

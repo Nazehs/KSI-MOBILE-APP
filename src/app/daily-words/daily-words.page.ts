@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAuthService } from 'src/providers/User.Auth.Service';
 
 @Component({
   selector: 'app-daily-words',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DailyWordsPage implements OnInit {
 
-  constructor() { }
+   wordClips:any = []
+  constructor(private service:UserAuthService) {
+    this.wordClips = this.service.getWordCLips();
+    console.log(this.wordClips);
+   }
 
   ngOnInit() {
   }
+
+
 
 }

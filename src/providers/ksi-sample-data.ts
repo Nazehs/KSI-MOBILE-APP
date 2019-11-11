@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { of } from "rxjs";
+import { of, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
 import { UserData } from "./user-data";
@@ -10,16 +10,19 @@ import { UserData } from "./user-data";
 })
 export class KsiSampleData {
   data: any;
+  baseUrl: any = "http://sixslatekays.com/dashboardksi/api";
 
   constructor(public http: HttpClient, public user: UserData) {}
 
-  load(): any {
+  load(): Observable<any> {
     if (this.data) {
       return of(this.data);
     } else {
-      return this.http
-        .get("assets/data/data.json")
-        .pipe(map(this.processPostData, this));
+      return this.http.get(`${this.baseUrl}/posts`).pipe(
+        map(response => {
+          return this.processPostData(response["data"]);
+        })
+      );
     }
   }
 
@@ -28,11 +31,12 @@ export class KsiSampleData {
     // just some good 'ol JS fun with objects and arrays
     // build up the data by linking speakers to sessions
     this.data = data;
+    console.log(data);
 
     // this.data.tracks = [];
 
     // loop through each post in the posts
-    this.data.posts.forEach((post: any) => {
+    this.data.forEach((post: any) => {
       // console.log(post);
     });
 
@@ -45,16 +49,16 @@ export class KsiSampleData {
     excludeTracks: any[] = [],
     segment = "all"
   ) {
-    console.log('day index',dayIndex);
+    console.log("day index", dayIndex);
     return this.load().pipe(
       map((data: any) => {
-        const day = data.posts;
+        const day = data;
         console.log("posts day: ", day);
         // console.log("data: ", data.posts);
 
         day.shownSessions = 0;
- console.log('value of day ',day);
- 
+        console.log("value of day ", day);
+
         queryText = queryText.toLowerCase().replace(/,|\.|-/g, " ");
         const queryWords = queryText.split(" ").filter(w => !!w.trim().length);
 
@@ -62,7 +66,7 @@ export class KsiSampleData {
           post.hide = true;
           // check if this post should show or not
           this.filterPosts(post, queryWords, excludeTracks, segment);
-          console.log('INSIDE POSTS ',segment);
+          console.log("INSIDE POSTS ", segment);
           if (!post.hide) {
             // if this session is not hidden then this group should show
             post.hide = false;
@@ -105,9 +109,9 @@ export class KsiSampleData {
     console.log("posts for looping ", posts);
 
     // posts.forEach((trackName: string) => {
-      if (excludeTracks.indexOf(posts.title) === -1) {
-        matchesTracks = true;
-      }
+    if (excludeTracks.indexOf(posts.title) === -1) {
+      matchesTracks = true;
+    }
     // });
 
     // if the segement is 'favorites', but session is not a user favorite
@@ -127,7 +131,7 @@ export class KsiSampleData {
     posts.hide = !(matchesQueryText && matchesTracks && matchesSegment);
   }
 
-   getPosts() {
+  getPosts() {
     return this.load().pipe(
       map((data: any) => {
         return data.posts.sort((a: any, b: any) => {

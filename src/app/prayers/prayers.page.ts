@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAuthService } from 'src/providers/User.Auth.Service';
 
 @Component({
   selector: 'prayers',
@@ -7,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrayersPage implements OnInit {
 
-  constructor() { }
-
+  prayers:any = []
+  constructor(private service:UserAuthService) {
+     this.service.getPrayers().subscribe(response => {
+       this.prayers = response['data'];
+       console.log(this.prayers);
+      });
+   }
   ngOnInit() {
   }
 

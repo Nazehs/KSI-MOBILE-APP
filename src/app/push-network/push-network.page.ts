@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAuthService } from 'src/providers/User.Auth.Service';
 
 @Component({
   selector: 'app-push-network',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PushNetworkPage implements OnInit {
 
-  constructor() { }
-
+  prayers:any = []
+  constructor(private service:UserAuthService) {
+     this.service.getPrayers().subscribe(response => {
+      //  response
+       this.prayers= response['data'];
+       console.log(response['data']);
+      });
+   }
   ngOnInit() {
   }
-
 }

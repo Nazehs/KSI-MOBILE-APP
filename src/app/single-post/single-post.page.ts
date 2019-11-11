@@ -1,20 +1,26 @@
-import { Component, ViewEncapsulation, OnInit } from "@angular/core";
+import { Component, ViewEncapsulation, OnInit, Sanitizer, Pipe, PipeTransform } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { KsiSampleData } from "../../providers/ksi-sample-data";
 import { UserData } from "../../providers/user-data";
 import { LoadingController } from "@ionic/angular";
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: "single-post",
   templateUrl: "./single-post.page.html",
   styleUrls: ["./single-post.page.scss"]
 })
-export class SinglePostPage {
+
+@Pipe({
+  name:'post.devotion'
+})
+
+export class SinglePostPage implements PipeTransform{
   isFavorite = false;
   post: any;
   defaultHref = "";
-
+  
   constructor(
     private dataProvider: KsiSampleData,
     private router: Router,
@@ -22,16 +28,19 @@ export class SinglePostPage {
     private userProvider: UserData,
     private route: ActivatedRoute,
     public socialSharing: SocialSharing,
+    private sanitizer:DomSanitizer
   ) {}
+
   ngOnInit() {}
+
   ionViewWillEnter() {
     console.log(this.isFavorite);
     
     this.dataProvider.load().subscribe((data: any) => {
       const postId = this.route.snapshot.paramMap.get("postId");
-      if (data.posts) {
+      if (data) {
         console.log("PostId inside: ", postId);
-        for (const post of data.posts) {
+        for (const post of data) {
           if (post && post.id == postId) {
             this.post = post;
             console.log('post goes here', post.title);
@@ -44,6 +53,10 @@ export class SinglePostPage {
         }
       }
     });
+  }
+
+  transform(html) {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
   toggleFavorite() {

@@ -10,16 +10,20 @@
   <ion-content>
   <ion-row>
     <ion-col>
-        <ion-item-sliding>
+        <ion-item-sliding  *ngFor="let prayer of prayers">
             <ion-item-options side="start">
               <ion-item-option color="danger" expandable>
                 Delete
               </ion-item-option>
             </ion-item-options>      
-            <ion-item lines="inset" [routerLink]="['/app/tabs/dashboards/push-network/prayer']">
+            <ion-item lines="inset"  [routerLink]="['/app/tabs/dashboards/push-network/prayer/{prayer.pushnetworkid}']">
                 <ion-label class="ion-text-wrap">
-                  <ion-text><h2>Word Clip Title Name</h2></ion-text>
-                  <p class="date">May 20, 2019</p>
+                  <ion-text><h2>
+                    {{prayer.title}}
+                  </h2></ion-text>
+                  <p class="date">
+                    {{prayer.createdDate | date}}
+                  </p>
                 </ion-label>
                 <ion-label>
   
@@ -31,48 +35,7 @@
               </ion-item-option>
             </ion-item-options>
           </ion-item-sliding>
-          <ion-item-sliding>
-              <ion-item-options side="start">
-                <ion-item-option color="danger" expandable>
-                  Delete
-                </ion-item-option>
-              </ion-item-options>      
-              <ion-item lines="inset">
-                  <ion-label class="ion-text-wrap">
-                    <ion-text><h2>Word Clip Title Name</h2></ion-text>
-                    <p class="date">May 20, 2019</p>
-                  </ion-label>
-                  <ion-label>
-                    
-                  </ion-label>
-                </ion-item>     
-              <ion-item-options side="end">
-                <ion-item-option color="tertiary" expandable>
-                  Edit
-                </ion-item-option>
-              </ion-item-options>
-            </ion-item-sliding>
-            <ion-item-sliding>
-                <ion-item-options side="start">
-                  <ion-item-option color="danger" expandable>
-                    Delete
-                  </ion-item-option>
-                </ion-item-options>      
-                <ion-item lines="inset">
-                    <ion-label class="ion-text-wrap">
-                      <ion-text><h2>Word Clip Title Name</h2></ion-text>
-                      <p class="date">May 20, 2019</p>
-                    </ion-label>
-                    <ion-label>
-                      
-                    </ion-label>
-                  </ion-item>     
-                <ion-item-options side="end">
-                  <ion-item-option color="tertiary" expandable>
-                    Edit
-                  </ion-item-option>
-                </ion-item-options>
-              </ion-item-sliding>
+      
     </ion-col>
   </ion-row>
   </ion-content>

@@ -48,6 +48,7 @@ const routes: Routes = [
   { path: 'create-chatroom', loadChildren: './create-chatroom/create-chatroom.module#CreateChatroomPageModule' },
   { path: 'prayer-details', loadChildren: './prayer-details/prayer-details.module#PrayerDetailsPageModule' },
   { path: 'note-details', loadChildren: './note-details/note-details.module#NoteDetailsPageModule' },
+  { path: 'create-note', loadChildren: './create-note/create-note.module#CreateNotePageModule' },
 
 ];
 
