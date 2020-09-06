@@ -42,7 +42,7 @@
     "rxjs": "~6.5.1",
     "string-width": "^4.1.0",
     "strip-ansi": "^5.2.0",
-    "tree-kill": "^1.2.1",
+    "tree-kill": "^1.2.2",
     "tslib": "^1.9.0",
     "untildify": "^4.0.0",
     "zone.js": "~0.9.1"
