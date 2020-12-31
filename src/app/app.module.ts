@@ -5,7 +5,8 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy, NavParams } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import { File } from '@ionic-native/file/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HttpErrorResponse, HttpHeaders, HttpClient } from '@angular/common/http';
@@ -15,14 +16,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
   declarations: [AppComponent, 
+    
     // FormsModule, ReactiveFormsModule
   ],
   entryComponents: [],
   imports: [
     BrowserModule,
+    // AccountModule,
     FormsModule,
     ReactiveFormsModule,
     IonicModule.forRoot(),
@@ -38,6 +43,10 @@ import { environment } from '../environments/environment';
   providers: [
     StatusBar,
     SplashScreen,
+    StreamingMedia,
+    Camera,
+    FileTransfer,
+    File,
     HttpClientModule, SocialSharing,
    
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

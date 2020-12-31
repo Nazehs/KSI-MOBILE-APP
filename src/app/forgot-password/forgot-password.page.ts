@@ -9,11 +9,13 @@ import { Router } from '@angular/router';
 export class ForgotPasswordPage implements OnInit {
 
   constructor(public router:Router) { }
-
+resetPasswordData = {
+  email:""
+}
   ngOnInit() {
   }
    // redirect to login page
-   resetPassword(){
+   resetPassword(data){
     this.router.navigateByUrl('/mainlogin');
   }
 

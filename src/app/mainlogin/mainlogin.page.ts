@@ -9,74 +9,82 @@ import { UserAuthService } from 'src/providers/User.Auth.Service';
 @Component({
   selector: 'mainlogin',
   templateUrl: './mainlogin.page.html',
-  styleUrls: ['./mainlogin.page.scss'],
+  styleUrls: ['./mainlogin.page.scss']
 })
 export class MainloginPage implements OnInit {
-  
   login: UserOptions = { username: '', password: '' };
 
-    submitted = false;
+  apiUrl = 'http://localhost:50/api/';
+  isLoggedin: boolean;
+  baseUrl: any ='http://sixslatekays.com/dashboardksi/api';
+  users: unknown;
+ 
+  submitted = false;
 
-     // reset status
-     isbusy = false;
-    hasFailed = false;
+  // reset status
+  isbusy = false;
+  hasFailed = false;
 
-  constructor(public userData:UserData,
-    public router:Router, private userService: UserAuthService) {  }
+  constructor(
+    public userData: UserData,
+    public router: Router,
+    // private userService: UserAuthService
+  ) {}
 
-  ngOnInit() {
-  }
-  ionViewWillEnter(){
+  ngOnInit() {}
+  ionViewWillEnter() {
     // this.isLoggedin();
     console.log('yes');
   }
-  
+
   onLogin(form: NgForm) {
-      if (form.valid) {
-        this.submitted = true;
-        console.log(this.login.username);
+    if (form.valid) {
+      this.submitted = true;
+      console.log(this.login.username);
       // this.userData.login(this.login.username,this.login.password);
-       // reset status
-        this.isbusy = true;
-        this.hasFailed = false;
-      
+      // reset status
+      this.isbusy = true;
+      this.hasFailed = false;
+
       // this.router.navigateByUrl('/app/tabs/posts');
-    }else{
-      this.hasFailed = true
+    } else {
+      this.hasFailed = true;
     }
   }
-  appLogin(forms:NgForm){      
-      this.submitted = true;
+  appLogin(forms: NgForm) {
+    this.submitted = true;
 
-      if (forms.valid) {
-          // reset status
-        this.isbusy = true;
-        this.hasFailed = false;
-        this.userData.login(this.login.username,this.login.password);
-        this.userService.getUser(this.login).subscribe((response)=>{
-          if(response != null){
+    if (forms.valid) {
+      // reset status
+      this.isbusy = true;
+      this.hasFailed = false;
 
-            this.isbusy= false;
-            console.log(response);
-            // navigate to home page
-            this.router.navigateByUrl('/app/tabs/home');
-
-          }else{
-            console.log('====================================');
-            console.log('No user details!');
-            console.log('====================================');
-          }
-        })
-      }else{
-        this.hasFailed = true;
-      }
+      // this.userData.login(this.login);
+      this.userData.login(this.login).subscribe(response => {
+        console.log(response.status)
+        if (response.status != 'failed') {
+          this.isbusy = false;
+          console.log(response);
+          // navigate to home page
+          this.router.navigateByUrl('/app/tabs/home');
+        } else {
+          console.log('====================================');
+          console.log('No user details!');
+          console.log('====================================');
+          this.hasFailed = true;
+          this.isbusy = false;
+        }
+      });
+    } else {
+      this.hasFailed = true;
+    }
   }
   // navigate to sign up if no account
-  appSignup(){
+  appSignup() {
     this.router.navigateByUrl('/mainsignup');
   }
   // navigate to forgot password
-  appForgotPass(){
+  appForgotPass() {
     this.router.navigate(['/forgot-password']);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as firebase from 'Firebase';
+import {database} from 'Firebase';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -9,7 +9,7 @@ import { NavController } from '@ionic/angular';
 })
 export class CreateChatroomPage implements OnInit {
   data = { roomname:'' };
-  ref = firebase.database().ref('chatrooms/');
+  ref = database().ref('chatrooms/');
   constructor(public navCtrl: NavController) { }
 
   ngOnInit() {

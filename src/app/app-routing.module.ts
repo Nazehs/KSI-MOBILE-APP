@@ -7,10 +7,6 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {
-    path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
-  },
-  {
     path: 'app',
     loadChildren: () => import('./tabs-page/tabs-page.module').then(m => m.TabsModule)
   },
@@ -35,7 +31,8 @@ const routes: Routes = [
     redirectTo: '/onboarding',
     pathMatch: 'full'
   },
-  { path: 'onboarding', loadChildren: './onboarding/onboarding.module#OnboardingPageModule' },  { path: 'inspire-impact', loadChildren: './inspire-impact/inspire-impact.module#InspireImpactPageModule' },
+  { path: 'onboarding', loadChildren: () => import('./onboarding/onboarding.module').then(m => m.OnboardingPageModule) },
+  { path: 'inspire-impact', loadChildren: './inspire-impact/inspire-impact.module#InspireImpactPageModule' },
   { path: 'notes', loadChildren: './notes/notes.module#NotesPageModule' },
   { path: 'daily-verse', loadChildren: './daily-verse/daily-verse.module#DailyVersePageModule' },
   { path: 'daily-nudget', loadChildren: './daily-nudget/daily-nudget.module#DailyNudgetPageModule' },
@@ -49,6 +46,14 @@ const routes: Routes = [
   { path: 'prayer-details', loadChildren: './prayer-details/prayer-details.module#PrayerDetailsPageModule' },
   { path: 'note-details', loadChildren: './note-details/note-details.module#NoteDetailsPageModule' },
   { path: 'create-note', loadChildren: './create-note/create-note.module#CreateNotePageModule' },
+  { path: 'edit-profile', loadChildren: './edit-profile/edit-profile.module#EditProfilePageModule' },
+  { path: 'pick-image', loadChildren: './pick-image/pick-image.module#PickImagePageModule' },
+  { path: 'accounts', loadChildren: './accounts/accounts.module#AccountsPageModule' },  { path: 'edit-prayer', loadChildren: './edit-prayer/edit-prayer.module#EditPrayerPageModule' },
+
+
+
+
+
 
 ];
 

@@ -1,9 +1,10 @@
 <ion-header>
   <ion-toolbar>
     <ion-back-button slot="start"></ion-back-button>
-    <ion-title>Add New Note</ion-title>
+    <ion-title *ngIf="!isUpdate">Add New Note</ion-title>
+    <ion-title *ngIf="isUpdate">Edit Note</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="createNote(notes.value)">
+      <ion-button (click)="createNote(notez.value)">
         <ion-icon name="checkmark"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -11,7 +12,7 @@
 </ion-header>
 <ion-content>
   <ion-grid>
-    <form  #notes="ngForm">
+    <form  #notez="ngForm">
       <ion-row>
         <ion-col>
           <ion-item>

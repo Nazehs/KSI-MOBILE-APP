@@ -1,0 +1,48 @@
+<!-- <ion-col> -->
+    <div class="edit-details" *ngIf="userEdit">
+    <form id="editform" #userForm="ngForm">
+      <ion-list inset>
+        <ion-list-header color="primary">
+          <h2>Edit Profile Details</h2>
+        </ion-list-header>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input [(ngModel)]="userEdit.username" name="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Full Name</ion-label>
+        <ion-input [(ngModel)]="userEdit.fullName" name="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Mobile Number</ion-label>
+        <ion-input [(ngModel)]="userEdit.mobile" name="mobile"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Address</ion-label>
+        <ion-input [(ngModel)]="userEdit.address" name="address"></ion-input>
+      </ion-item>
+      <ion-row class="sex">
+        <ion-radio-group (ionChange)="onChangeHandler($event)">
+            <ion-list-header>
+                Gender
+              </ion-list-header>          
+         <ion-item lines="none">
+           <ion-radio value="Female" slot="start" [checked]="userEdit.sex==='Female'"></ion-radio>
+           <ion-label>Female</ion-label>
+         </ion-item>
+         <ion-item lines="none">
+            <ion-radio value="Male" slot="start" [checked]="userEdit.sex==='Male'"></ion-radio>
+            <ion-label>Male</ion-label>
+          </ion-item>
+        </ion-radio-group>    
+      </ion-row>
+      <ion-row class="ion-padding">
+          <ion-col>
+            <ion-button (click)="cancelUpdate()" fill="outline">Cancel</ion-button>
+          </ion-col>
+          <ion-col class="ion-text-right">
+            <ion-button (click)="updateDetails()" fill="outline">Update</ion-button>
+          </ion-col>
+        </ion-row>
+  </ion-list>
+    </form>

@@ -10,20 +10,20 @@
 <ion-content>
   <!-- upper  wrapper -->
   <ion-card class="dashboard-upper">
-    <ion-card-content>
+    <ion-card-content *ngIf="userDetails">
       <ion-row>
         <ion-col size="2">
           <div>
             <div class="hero-avatar">
-              <img src="../../../assets/img/appicon.png" alt="Speaker profile pic">
+              <img [src]="userDetails.imgUrl" alt="{{userDetails.fullName}}'s avatar">
             </div>
           </div>
         </ion-col>
         <ion-col>
-          Nazeh Abel
+          {{userDetails.fullName}}
           <!-- avatar email address -->
-          <p class="user-email">Nazehabel@gmail.com</p>
-          <ion-button size="small" class="edit-btn" shape="round" fill="outline" (click)="editProfile()">Edit Profile
+          <p class="user-email">{{userDetails.email}}</p>
+          <ion-button size="small" class="edit-btn" shape="round" fill="outline" (click)="editProfile()">View Profile
           </ion-button>
         </ion-col>
       </ion-row>

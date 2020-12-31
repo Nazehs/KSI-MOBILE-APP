@@ -16,9 +16,12 @@ constructor(private router:Router, private storage:Storage) {
    
 }
   ngOnInit() {
-    this.counter = this.notes.length;
+    
+  }
+  ionViewWillEnter(){
     this.storage.get("Notes").then(response=>{
       this.notes = response;
+      this.counter = this.notes.length;
       console.log(this.notes);
     })
   }

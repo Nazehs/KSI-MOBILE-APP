@@ -1,0 +1,37 @@
+<ion-header no-border>
+    <ion-toolbar  color="transparent">
+      <ion-buttons ion-button menuToggle>
+        <!-- <ion-icon name="menu"></ion-icon> -->
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="content-color padding" >
+    <ion-img [src]=base64img class="square" *ngIf="base64img!=''"></ion-img>
+    <div class="square" *ngIf="base64img==''">
+      <button class="camera-circle" ion-button style="z-index:20" (click)="imageCapturedGallery()">
+        <ion-icon name="images" style="color:#000 !important"></ion-icon>
+      </button>
+      <button class="camera-circle" ion-button style="z-index:20" (click)="imageCaptured()">
+        <ion-icon name="camera" style="color:#000 !important"></ion-icon>
+      </button>
+    </div>
+        <div class="button-row">
+          <ion-button class="zoom" icon-only style="margin-right:25%;float: left;" (click)="clear()">
+            <ion-icon class="zoom-btn" name="close"></ion-icon>
+          </ion-button>
+          <ion-button class="zoom"  *ngIf="base64img!=''"  icon-only style="margin-left:25%;float: right;" (click)="nextPage()">
+            <ion-icon class="zoom-btn" name="arrow-forward"></ion-icon>
+          </ion-button>
+        </div>
+    <!-- <ion-row class="upload-row">
+      <ion-img [src]='base64img' class="circle" *ngIf="base64img!=''"></ion-img>
+      <div class="circle" *ngIf="base64img==''">
+        
+      </div>
+      <ion-button ion-button class="submit-btn" expand="full" (click)="uploadPic()">Upload Photo
+      </ion-button>
+    </ion-row> -->
+  
+  </ion-content>

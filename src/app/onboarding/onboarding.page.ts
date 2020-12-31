@@ -11,11 +11,11 @@ import { forkJoin } from 'rxjs';
   templateUrl: './onboarding.page.html',
   styleUrls: ['./onboarding.page.scss'],
 })
-export class OnboardingPage implements OnInit {
+export class OnboardingPage {
 
   showSkip = true;
 
-  @ViewChild('slides', {static:false}) slides: IonSlides;
+  @ViewChild('slides', { static: true }) slides: IonSlides;
 
   constructor(
     public menu: MenuController,
@@ -25,8 +25,8 @@ export class OnboardingPage implements OnInit {
 
   startApp() {
     this.router
-      .navigateByUrl('/app/tabs/home')
-      .then(() => this.storage.set('ion_did_tutorial', 'true'));
+      .navigateByUrl('/app/tabs/home', { replaceUrl: true })
+      .then(() => this.storage.set('ion_did_tutorial', true));
   }
 
   onSlideChangeStart(event) {
@@ -37,12 +37,8 @@ export class OnboardingPage implements OnInit {
 
   ionViewWillEnter() {
     this.storage.get('ion_did_tutorial').then(res => {
-    
-      
-      if (JSON.parse(res) === true) {
-        this.router.navigateByUrl('/app/tabs/home');
-      }else{
-        return;
+      if (res === true) {
+        this.router.navigateByUrl('/app/tabs/home', { replaceUrl: true });
       }
     });
 
@@ -52,9 +48,6 @@ export class OnboardingPage implements OnInit {
   ionViewDidLeave() {
     // enable the root left menu when leaving the tutorial page
     this.menu.enable(true);
-  }
-  ngOnInit() {
-    // return forkJoin()
   }
 
 }

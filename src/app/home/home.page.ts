@@ -1,18 +1,18 @@
-import { Component, ViewChild, OnInit, ViewEncapsulation } from "@angular/core";
-import { Router } from "@angular/router";
+import { Component, ViewChild, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 // import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
-import { ActionSheetController } from "@ionic/angular";
+import { ActionSheetController, IonItemSliding } from '@ionic/angular';
 import {
   AlertController,
   IonList,
   LoadingController,
   ModalController,
   ToastController
-} from "@ionic/angular";
-import { ScheduleFilterPage } from "../schedule-filter/schedule-filter";  
-import { KsiSampleData } from "../../providers/ksi-sample-data";
-import { UserData } from "../../providers/user-data";
+} from '@ionic/angular';
+import { KsiSampleData } from '../../providers/ksi-sample-data';
+import { UserData } from '../../providers/user-data';
 import { log } from 'util';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-home',
@@ -20,25 +20,8 @@ import { log } from 'util';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  // making reference to the post elements
-  // @ViewChild('postList') postList: IonList;
-  @ViewChild(IonList, { static: false }) postList: IonList;
-
-  // variables
-  posts: any = [];
-  postsLoaded: any = [];
-  colors: any = [];
-  dayIndex = 0;
-  queryText = "";
-  // segment = 'all';
-  // excludeTracks: any = [];
-  shownSessions: any = [];
-  // groups: any = [];
-  confDate: string;
-  segment = "all";
-  excludeTracks: any = [];
-  isloggedIn;
   constructor(
+    private socialSharing: SocialSharing,
     public actionSheetCtrl: ActionSheetController,
     public confData: KsiSampleData,
     public loadingCtrl: LoadingController,
@@ -49,22 +32,43 @@ export class HomePage implements OnInit {
     public user: UserData,
     private alertCtrl: AlertController
   ) { }
+  // making reference to the post elements
+  // @ViewChild('postList') postList: IonList;
+  @ViewChild('slidingItem', { static: true }) devotionList: IonItemSliding;
+
+  // variables
+  posts: any = [];
+  postsLoaded: any = [];
+  colors: any = [];
+  dayIndex = 0;
+  queryText = '';
+  // segment = 'all';
+  // excludeTracks: any = [];
+  shownSessions: any = [];
+  // groups: any = [];
+  confDate: string;
+  segment = 'all';
+  excludeTracks: any = [];
+  isloggedIn;
+
+
 
   ngOnInit() {
     this.updatePosts();
     // this.itemColor();
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
 
    this.isloggedIn = this.user.isLoggedIn();
-   
+
   }
   updatePosts() {
-    if (this.postList) {
+    if (this.devotionList) {
       //  closing all open sliding items when the posts updates
-      this.postList.closeSlidingItems();
-      console.log(".....");
+      this.devotionList.closeOpened();
+      ;
+      console.log('.....');
     }
     // this.confData.getPosts().subscribe((posts: any[]) => {
     // console.log("Posts: ", posts);
@@ -82,7 +86,7 @@ export class HomePage implements OnInit {
 
         this.posts = data;
         this.postsLoaded = data;
-        console.log("session count", this.shownSessions);
+        console.log('session count', this.shownSessions);
       });
     // });
   }
@@ -91,26 +95,14 @@ export class HomePage implements OnInit {
     // resetin the post to the searched value
     this.posts = this.postsLoaded;
   }
-  async presentFilter() {
-    const modal = await this.modalCtrl.create({
-      component: ScheduleFilterPage
-      // componentProps: { excludedTracks: this.excludeTracks }
-    });
-    await modal.present();
 
-    const { data } = await modal.onWillDismiss();
-    if (data) {
-      // this.excludeTracks = data;
-      this.updatePosts();
-    }
-  }
 
   filteredPosts(searchbar) {
     // reseting all items
     this.initializeItems();
 
-    //search bar values
-    var postSearch = searchbar.srcElement.value;
+    // search bar values
+    const postSearch = searchbar.srcElement.value;
 
     if (!postSearch) {
       return;
@@ -132,21 +124,21 @@ export class HomePage implements OnInit {
     console.log(postSearch, this.postsLoaded.length);
   }
 
-  async addFavorite(slidingItem: HTMLIonItemSlidingElement, sessionData: any) {
+  async addFavorite(slidingItem: IonItemSliding, sessionData: any) {
     if (this.user.hasFavorite(sessionData.title)) {
       // woops, they already favorited it! What shall we do!?
       // prompt them to remove it
-      this.removeFavorite(slidingItem, sessionData, "Devotion Already Added To Favorites");
+      this.removeFavorite(slidingItem, sessionData, 'Devotion Already Added To Favorites');
     } else {
       // remember this session as a user favorite
       this.user.addFavorite(sessionData.title);
 
       // create an alert instance
       const alert = await this.alertCtrl.create({
-        header: "Favorite Added",
+        header: 'Favorite Added',
         buttons: [
           {
-            text: "OK",
+            text: 'OK',
             handler: () => {
               // close the sliding item
               slidingItem.close();
@@ -160,16 +152,16 @@ export class HomePage implements OnInit {
   }
 
   async removeFavorite(
-    slidingItem: HTMLIonItemSlidingElement,
+    slidingItem: IonItemSliding,
     sessionData: any,
     title: string
   ) {
     const alert = await this.alertCtrl.create({
       header: title,
-      message: "Would you like to remove this devotion from your favorites?",
+      message: 'Would you like to remove this devotion from your favorites?',
       buttons: [
         {
-          text: "Cancel",
+          text: 'Cancel',
           handler: () => {
             // they clicked the cancel button, do not remove the session
             // close the sliding item and hide the option buttons
@@ -177,7 +169,7 @@ export class HomePage implements OnInit {
           }
         },
         {
-          text: "Remove",
+          text: 'Remove',
           handler: () => {
             // they want to remove this session from their favorites
             this.user.removeFavorite(sessionData.title);
@@ -185,7 +177,7 @@ export class HomePage implements OnInit {
 
             // close the sliding item and hide the option buttons
             slidingItem.close();
-            
+
           }
         }
       ]
@@ -193,4 +185,15 @@ export class HomePage implements OnInit {
     // now present the alert on top of all other content
     await alert.present();
   }
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      this.updatePosts();
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
+
+
 }

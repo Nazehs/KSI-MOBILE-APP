@@ -12,11 +12,7 @@
         Favorites
       </ion-segment-button>
     </ion-segment>
-    <ion-buttons slot="end">
-      <ion-button (click)="presentFilter()">
-        <ion-icon slot="icon-only" name="options"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+   
   </ion-toolbar>
 <!-- end of main header toolbar -->
 </ion-header>
@@ -28,18 +24,25 @@
   <!-- <div class="search-wrapper">
 
   </div> -->
-    <ion-searchbar animated [(ngModel)]="queryText"  (ionChange)="filteredPosts($event)" placeholder="Search for a devotion "></ion-searchbar>
+    <ion-searchbar fixed animated [(ngModel)]="queryText"  (ionChange)="filteredPosts($event)" placeholder="Search for a devotion "></ion-searchbar>
 
   </ion-toolbar>
   <!-- search wrap -->
   
 </div>
-<ion-list>
-  <ion-grid fixed>
+
+<!-- <ion-list> -->
+  <ion-grid>
+  
+          <ion-refresher slot="fixed" color="success" (ionRefresh)="doRefresh($event)">
+              <ion-refresher-content></ion-refresher-content>
+            </ion-refresher>
+        <!-- </ion-content> -->
     <ion-row class="ion-align-items-stretch"  #postList [hidden]="shownSessions === 0">
       <ion-col size="12" size-md="6" *ngFor="let post of posts" [hidden]="post.hide">
         <!-- post item -->
-        <ion-item-sliding #slidingItem>
+        <ion-list #devotionList>
+          <ion-item-sliding #slidingItem >
           <div>  
             <ion-item detail lines="inset" routerLink="/single-post/{{post.id}}">
               <ion-text>
@@ -65,6 +68,7 @@
               </ion-item-options>
           </div>
         </ion-item-sliding>
+        </ion-list>
       </ion-col>
     </ion-row>
     <ion-list-header [hidden]="shownSessions > 0">
@@ -78,5 +82,5 @@
    </ion-row>
     </ion-list-header>
   </ion-grid>
-</ion-list>
+<!-- </ion-list> -->
 </ion-content>

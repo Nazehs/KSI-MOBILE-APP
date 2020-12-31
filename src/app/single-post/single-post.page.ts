@@ -1,26 +1,26 @@
-import { Component, ViewEncapsulation, OnInit, Sanitizer, Pipe, PipeTransform } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { KsiSampleData } from "../../providers/ksi-sample-data";
-import { UserData } from "../../providers/user-data";
-import { LoadingController } from "@ionic/angular";
+import { Component, ViewEncapsulation, OnInit, Sanitizer, Pipe, PipeTransform } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { KsiSampleData } from '../../providers/ksi-sample-data';
+import { UserData } from '../../providers/user-data';
+import { LoadingController } from '@ionic/angular';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
-import {DomSanitizer} from "@angular/platform-browser";
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
-  selector: "single-post",
-  templateUrl: "./single-post.page.html",
-  styleUrls: ["./single-post.page.scss"]
+  selector: 'single-post',
+  templateUrl: './single-post.page.html',
+  styleUrls: ['./single-post.page.scss']
 })
 
 @Pipe({
-  name:'post.devotion'
+  name: 'post.devotion'
 })
 
-export class SinglePostPage implements PipeTransform{
+export class SinglePostPage implements PipeTransform {
   isFavorite = false;
   post: any;
-  defaultHref = "";
-  
+  defaultHref = '';
+
   constructor(
     private dataProvider: KsiSampleData,
     private router: Router,
@@ -28,18 +28,18 @@ export class SinglePostPage implements PipeTransform{
     private userProvider: UserData,
     private route: ActivatedRoute,
     public socialSharing: SocialSharing,
-    private sanitizer:DomSanitizer
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {}
 
   ionViewWillEnter() {
     console.log(this.isFavorite);
-    
+
     this.dataProvider.load().subscribe((data: any) => {
-      const postId = this.route.snapshot.paramMap.get("postId");
+      const postId = this.route.snapshot.paramMap.get('postId');
       if (data) {
-        console.log("PostId inside: ", postId);
+        console.log('PostId inside: ', postId);
         for (const post of data) {
           if (post && post.id == postId) {
             this.post = post;
@@ -47,9 +47,9 @@ export class SinglePostPage implements PipeTransform{
             this.isFavorite = this.userProvider.hasFavorite(
               this.post.title
             );
-           
+
           }
-          console.log('favourite: ',this.isFavorite);
+          console.log('favourite: ', this.isFavorite);
         }
       }
     });
@@ -60,7 +60,7 @@ export class SinglePostPage implements PipeTransform{
   }
 
   toggleFavorite() {
-    console.log(this.post.title);    
+    console.log(this.post.title);
     if (this.userProvider.hasFavorite(this.post.title)) {
       this.userProvider.removeFavorite(this.post.title);
       this.isFavorite = false;
@@ -69,42 +69,32 @@ export class SinglePostPage implements PipeTransform{
       console.log(this.post.title);
       this.userProvider.addFavorite(this.post.title);
       this.isFavorite = true;
-    console.log('vvv',this.isFavorite);
-    
+      console.log('vvv', this.isFavorite);
+
     }
   }
   compilemsg(index): string {
-    var msg = this.post[index].body + "..." + this.post[index].title;
-    return msg.concat(" \n Awesome !");
+
+    const msg =  this.post.title + '\n' + this.post.devotion + '...' ;
+    console.log(msg);
+
+    return msg.concat('\n Stay focus with Jesus...');
+
   }
 
   shareMedia(index) {
-    var msg = this.compilemsg(index);
-    this.socialSharing.canShareVia(msg, null, null, null);
+    let msg = this.compilemsg(index);
+    const parser = new DOMParser();
+    const parsedHtml = parser.parseFromString(msg, 'text/html');
+    msg = parsedHtml.body.innerText;
+
+    this.socialSharing.share(msg, 'Kingdom Support Initiatives Devotional').then(() => {
+  console.log('success');
+}, eror => {
+  console.log('error!', eror);
+});
   }
-  whatsappShare(index){
-    var msg  = this.compilemsg(index);
-     this.socialSharing.shareViaWhatsApp(msg, null, null);
-   }
-
-  // this.socialSharing.canShareViaEmail().then(() => {
-  //   // Sharing via email is possible
-  // }).catch(() => {
-  //   // Sharing via email is not possible
-  // });
-  // Check if sharing via email is supported
-//   this.socialSharing.canShareViaEmail().then(() => {
-//   // Sharing via email is possible
-// }).catch(() => {
-//   // Sharing via email is not possible
-// });
-
-// // Share via email
-// this.socialSharing.shareViaEmail('Body', 'Subject', ['recipient@example.org']).then(() => {
-//   // Success!
-// }).catch(() => {
-//   // Error!
-// });
+ 
 
   ionViewDidEnter() {
     this.defaultHref = `/app/tabs/posts`;
@@ -121,12 +111,11 @@ export class SinglePostPage implements PipeTransform{
 
 
   getDevotionLength(devotionText) {
-    let words = devotionText.split(' ');
-    let wordLength = words.length;
+    const words = devotionText.split(' ');
+    const wordLength = words.length;
     return wordLength / 200 < 1 ? 1 : wordLength / 200;
-    
+
   }
 //  this.socialSharing.canShareVia().then(()=>{});
 
 }
- 

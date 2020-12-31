@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as firebase from 'Firebase';
+import {database} from 'Firebase';
 import { NavController, NavParams } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ChatromPage } from '../chatrom/chatrom.page';
@@ -12,7 +12,7 @@ import { UserAuthService } from 'src/providers/User.Auth.Service';
 })
 export class ChatromListPage implements OnInit {
   rooms = [];
-  ref =  firebase.database().ref('chatrooms/');
+  ref =  database().ref('chatrooms/');
   
   constructor(private router: Router, private navCtrl: NavController, private dataservice: UserAuthService ) {
     console.log(this.ref);

@@ -1,31 +1,31 @@
-<ion-header>
+<ion-header *ngIf="prayer">
     <ion-toolbar>
       <ion-buttons slot="start">
         <ion-back-button defaultHref="/app/tabs/dashboards/push-network"></ion-back-button>
       </ion-buttons>
       <!-- <ion-title>{{ post.title }}</ion-title> -->
-      <ion-title>Tittle Goes Here</ion-title>
+      <ion-title>{{prayer.title}}</ion-title>
     </ion-toolbar>
   </ion-header>
   
-  <ion-content  class="post-detail ion-padding">
+  <ion-content *ngIf="prayer"  class="post-detail ion-padding">
     <div>
       <div ion-item class="wrapper">
         <ion-text>
           <p class="date-single-post">
             <ion-row>
               <ion-col size="8">
-                <span> 20th September, 2019</span>
+                <span> 
+                  {{prayer.createdDate | date}}
+                </span>
               </ion-col>
-              <!-- <ion-col size="4">
-                <li class="devotion-length">{{getDevotionLength( post.body)}} &nbsp; Min Read</li>
-              </ion-col> -->
             </ion-row>
           </p>
         </ion-text>
-        <h3 class="post-title">Titlle</h3>
+        <h3 class="post-title">{{prayer.title}}</h3>
         <p class="post-reference">
-         Nazeh Abel
+         {{ prayer.userName}} 
+         <!-- Nazeh Abel -->
         </p>
       </div>
     </div>
@@ -33,8 +33,8 @@
     <ion-grid class="no-padding">
       <ion-row class="post-content">
         <ion-text>
-          <!-- {{ post.body }} -->
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur repellat totam deserunt modi tenetur dolorum illum, numquam sit, debitis maxime pariatur voluptatibus. Amet iste officia recusandae, quam aliquam voluptatibus consequatur?
+          {{ prayer.content }}
+         
               </ion-text>
       </ion-row>
     </ion-grid>

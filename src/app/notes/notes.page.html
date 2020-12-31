@@ -3,8 +3,10 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-buttons class="clipboard" (click)="createNote()"  slot="end">
-      <ion-icon name="clipboard"></ion-icon>
+    <ion-buttons class="ion-horizontal-padding clipboard" (click)="createNote()"  slot="end">
+      <ion-button color="primary" slot="end"> 
+          <ion-icon name="clipboard"></ion-icon>
+         </ion-button>
     </ion-buttons>
     <ion-title>Notes</ion-title>
   </ion-toolbar>
@@ -12,7 +14,7 @@
 
 <ion-content>
   <div>
-    <div class="list-item ion-activatable" [ngClass]="getClass(noteIndex)"  *ngFor="let note of notes;  let noteIndex = index" (click)="noteDetails(note, note.createdDate)" style="height: 65px; padding:10px">
+    <div class="list-item ion-activatable" [ngClass]="noteIndex%2 == 0 ? 'success': 'isWhite'"  *ngFor="let note of notes;  let noteIndex = index" (click)="noteDetails(note, note.createdDate)" style="height: 65px; padding:10px">
       <ion-text class="note-title">
         {{note.title}}
       </ion-text>
@@ -23,20 +25,26 @@
     </div>
   </div>
   <!-- this will show up when there is no note content -->
-  <!-- <div class="" *ngIf="counter <= 0">
+  <div class="" *ngIf="counter == 0">
     <ion-row class="row-empty-note">
       <ion-col class="text-center" text-center>
-        <p class="note-empty-text">No Favorite Devotion!</p>
+        <p class="note-empty-text">You Have Not Create Any Note Yet!</p>
         <p class="empty-note">
 
         </p>
       </ion-col>
     </ion-row>
-  </div> -->
-  <ion-fab vertical="bottom" (click)="createNote()"  color="primary"  horizontal="end" slot="fixed">
+  </div>
+  <ion-fab vertical="bottom" (click)="createNote()"  color="primary"  horizontal="center" slot="fixed">
       <ion-fab-button>
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
     </ion-fab>
+
+    <!-- <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+        <ion-fab-button>
+          <ion-icon name="arrow-dropup"></ion-icon>
+        </ion-fab-button>
+      </ion-fab> -->
 </ion-content>
 

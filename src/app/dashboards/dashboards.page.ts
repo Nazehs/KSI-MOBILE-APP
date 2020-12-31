@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
 import { EditprofilePage } from "../editprofile/editprofile.page";
 import { OverlayEventDetail } from '@ionic/core';
+import { Storage } from '@ionic/storage';
 
 
 @Component({
@@ -15,17 +16,15 @@ export class DashboardsPage implements OnInit {
 
   data= 30;
 
-  public  userDetails:any = {
-    name: 'Nazeh Abel',
-    mobile: '08165089768',
-    address: 'No 18a Mike Ijieze',
-    sex: 'Male',
-    email:'nazehabel@gmail.com'
-  };
+  public  userDetails:any;
 
-  constructor(private router: Router, private modalContoller: ModalController) {
+  constructor(private router: Router, private storage:Storage, private modalContoller: ModalController) {
     this.today = Date.now();
     console.log(this.today);
+    this.storage.get('userLoggedin').then((data)=>{
+              
+      this.userDetails= data[0];
+    })
   }
 
   ngOnInit() {}
@@ -53,39 +52,9 @@ export class DashboardsPage implements OnInit {
     this.router.navigateByUrl("/app/tabs/dashboards/daily-nudget");
   }
 
-  async editProfile() {
-    const modal = await this.modalContoller.create({
-      component: EditprofilePage,
-      cssClass: "editprofile_modal",
-      componentProps: {
-        data_details: this.data,
-        userDetails:this.userDetails
-      }
-    });
-    modal.onDidDismiss().then((details:OverlayEventDetail) => {
-      if (details !== null){
-        console.log('this details',details);
-      }
-    })
-    return await modal.present();
+
+  editProfile(){
+    this.router.navigate(['/app/tabs/dashboards/accounts']);
   }
-
-
-//   async openModal(){
-//     const modal = await this.modalController.create({
-//       component:ModalPage,
-//       cssClass:'product_modal',
-//       // showBackdrop:true,
-//       componentProps:{
-//         custum_id: this.xtralarge,
-//         quantity: this.quantity
-//       }
-//     });
-//     modal.onDidDismiss().then((detail: OverlayEventDetail) => {
-//       if (detail !== null) {
-//         console.log('The result:', detail.data);
-//       }
-//    });
-//     return await modal.present();
-// }
+  navLove(){}
 }

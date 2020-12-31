@@ -40,7 +40,6 @@
 <ion-footer>
   <ion-toolbar>
     <ion-title>
-
       <ion-row class="footer-icons">
         <ion-col class="ion-text-center" size="6" [ngClass]="{'show-favorite': isFavorite}">
           <ion-icon name="heart-empty" class="favourite" size="large" class="ion-text-center" class="icon-heart-empty"
@@ -48,7 +47,7 @@
           <ion-icon name="heart" color="danger" size="large" class="icon-heart" (click)="toggleFavorite()"></ion-icon>
         </ion-col>
         <ion-col class="share" size="6" class="ion-text-center" [ngClass]="{ 'show-favorite': isFavorite }">
-          <ion-icon name="share" size="large" class="icon-share-alt" (click)="regularShare(i)"></ion-icon>
+          <ion-icon name="share" size="large" class="icon-share-alt" (click)="shareMedia(post.id)"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-title>

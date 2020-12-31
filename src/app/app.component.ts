@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Platform, Events, ToastController, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import * as firebase from 'firebase';
 import { UserData } from 'src/providers/user-data';
 import { Router } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
 import { Storage } from '@ionic/storage';
+import { timer } from 'rxjs';
+import {initializeApp} from 'firebase';
+// require('firebase/database');
 
 const config = {
   apiKey: 'AIzaSyA8TfkyZs_m_bfZYPy1Byo2Z9wm-i4ktis',
@@ -21,74 +23,44 @@ const config = {
   styleUrls: ['app.component.scss']
 })
 
-export class AppComponent  implements OnInit{
+export class AppComponent  implements OnInit {
 
   loggedIn = false;
   dark = false;
+appPages = [
+    {
 
-  appPages = [
-    {
-      title: "Dashboard",
-      url: "/app/tabs/dashboards",
-      icon: "stats"
+      title: 'About',
+      url: '/app/tabs/about',
+      icon: 'information-circle'
     },
     {
-      title: "Bookmark",
-      url: "/app/tabs/bookmark",
-      icon: "bookmark"
+      title: 'Daily Devotional',
+      url: '/app/tabs/home',
+      icon: 'stopwatch'
     },
     {
-      title: "Settings",
-      url: "/app/tabs/settings",
-      icon: "options"
+      title: 'PUSH Network',
+      url: '/app/tabs/dashboards/push-network',
+      icon: 'flame'
     },
     {
-      title: "Generals",
-      url: "/app/tabs/generals",
-      icon: "paper"
-    },
-    {
-      title: "Plans",
-      url: "/app/tabs/plans",
-      icon: "calendar"
-    },
-    {
-      title: "Posts",
-      url: "/app/tabs/posts",
-      icon: "stopwatch"
-    },
-    {
-      title: "Prayers",
-      url: "/app/tabs/prayers",
-      icon: "contacts"
-    },
-    {
-      title: "Home",
-      url: "/app/tabs/home",
-      icon: "home"
-    },
-
-    {
-      title: "My Devotions",
-      url: "/app/tabs/devotions",
-      icon: "calendar"
-    },
-    {
-      title: "About",
-      url: "/app/tabs/about",
-      icon: "information-circle"
+      title: 'Podcast- Inspire Impact',
+      url: '/app/tabs/inspire-impact',
+      icon: 'microphone'
     }
   ];
- 
-  
+
+  showSplash = true;
+
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private userService:UserData,
+    private userService: UserData,
     private events: Events,
     private menu: MenuController,
-    
     private router: Router,
     private storage: Storage,
     private userData: UserData,
@@ -109,7 +81,7 @@ export class AppComponent  implements OnInit{
   //   firebase.initializeApp(config);
   //   this.isLoggedin();
   // }
-  
+
   // check if the user is loggedin or not
 // isLoggedin(){
 //   // loggedIn
@@ -123,7 +95,7 @@ export class AppComponent  implements OnInit{
 //     }
 //    });
 
- 
+
 //   console.log(this.loggedIn)
 // }
 
@@ -145,7 +117,6 @@ async ngOnInit() {
     });
 
     await toast.present();
-
     toast
       .onDidDismiss()
       .then(() => this.swUpdate.activateUpdate())
@@ -156,9 +127,20 @@ async ngOnInit() {
 initializeApp() {
   this.platform.ready().then(() => {
     this.statusBar.styleDefault();
-    this.splashScreen.hide();
+    this.statusBar.styleBlackTranslucent();
+    // StatusBar.overlaysWebView(true);
+    // StatusBar.backgroundColorByHexString("#333");
+    // StatusBar.overlaysWebView(true);
+    document.addEventListener('deviceready', onDeviceReady, false);
+    function onDeviceReady() {
+    console.log(StatusBar);
+}
+    // this.splashScreen.hide();
+    this.splashScreen.hide();  // <-- hide static image
+
+    timer(3000).subscribe(() => this.showSplash = false);
   });
-    firebase.initializeApp(config);
+  initializeApp(config);
 }
 
 checkLoginStatus() {
@@ -198,5 +180,5 @@ openTutorial() {
   this.storage.set('ion_did_tutorial', false);
   this.router.navigateByUrl('/onboarding');
 }
-  
+
 }

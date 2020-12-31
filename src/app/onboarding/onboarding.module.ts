@@ -4,8 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-
 import { OnboardingPage } from './onboarding.page';
+
+// import { OnboardingPage } from './onboarding.page';
 
 const routes: Routes = [
   {

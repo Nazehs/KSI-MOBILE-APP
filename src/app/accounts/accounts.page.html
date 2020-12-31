@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Account Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="userEdit" class="ion-padding-top ion-text-center">
+   <div class="ion-text-center avatar">
+      <!-- https://www.gravatar.com/avatar?d=mm&s=140 -->
+      <img class="" [src]="userEdit.imgUrl" alt="{{userEdit.fullName}} avatar" >          
+   </div>   
+   <div class="camera-wp" style="margin-top:-39px!important;margin-bottom:30px;">
+      <button class="camera-circle" style="z-index:20" (click)="navigateEdit()">
+          <ion-icon name="camera" style="color:#000 !important"></ion-icon>
+        </button>
+   </div>
+    <ion-button size="small" class="edit-btn" shape="round" fill="outline" (click)="enableEditMode()">Edit Profile
+    </ion-button>
+  </div>
+  <ion-row *ngIf="!isEditModeEnable">
+    <ion-col>
+        <ion-list inset>
+            <ion-item>
+              Full Name: &nbsp; {{userEdit.fullName}}
+            </ion-item>
+            <ion-item>
+              Email Address: &nbsp; {{userEdit.email}}
+            </ion-item>
+            <ion-item>
+              Address: &nbsp; {{userEdit.address}}
+            </ion-item>
+            <ion-item>
+              Gender: &nbsp; {{userEdit.sex}}
+            </ion-item>
+            <ion-item>
+              Mobile Number:&nbsp; {{userEdit.mobile}}
+            </ion-item>
+      
+            <ion-item (click)="logout()">Logout</ion-item>
+          </ion-list>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="isEditModeEnable">
+    <ion-col>
+      <app-edits [userEdit]="userEdit"  (userDetails)="updateUserDetails($event)"  (cancelledUpdate)="cancelledUpdate($event)"></app-edits>
+    </ion-col>
+  </ion-row>
+</ion-content>

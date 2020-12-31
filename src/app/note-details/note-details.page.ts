@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute, NavigationExtras } from "@angular/router";
-import { AlertController } from "@ionic/angular";
-import { Storage } from "@ionic/storage";
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: "app-note-details",
-  templateUrl: "./note-details.page.html",
-  styleUrls: ["./note-details.page.scss"]
+  selector: 'app-note-details',
+  templateUrl: './note-details.page.html',
+  styleUrls: ['./note-details.page.scss']
 })
 export class NoteDetailsPage implements OnInit {
   note: any;
@@ -22,7 +22,7 @@ export class NoteDetailsPage implements OnInit {
       if (this.router.getCurrentNavigation().extras.state) {
         this.note = this.router.getCurrentNavigation().extras.state.note;
       } else {
-        console.log("no state captured");
+        console.log('no state captured');
       }
     });
   }
@@ -39,7 +39,7 @@ export class NoteDetailsPage implements OnInit {
     };
 
     this.router.navigate(
-      ["/app/tabs/notes/create-note"],
+      ['/app/tabs/notes/create-note'],
       navigationsOptionExtras
     );
   }
@@ -48,21 +48,20 @@ export class NoteDetailsPage implements OnInit {
 
   async deleteNote(id: number) {
     const alert = await this.alertController.create({
-      header: "Confirm Delete",
+      header: 'Confirm Delete',
       // subHeader: 'Subtitle',
-      message: "Are You sure you want to delete this note?",
+      message: 'Are You sure you want to delete this note?',
       buttons: [
         {
-          text: "Cancel",
+          text: 'Cancel',
           handler: () => {
-            console.log("delete cancelled");
+            console.log('delete cancelled');
           }
         },
         {
-          text: "Delete",
+          text: 'Delete',
           handler: () => {
             this.deleteData(id);
-            this.router.navigate(['/app/tabs/notes']);
 
           }
         }
@@ -73,12 +72,14 @@ export class NoteDetailsPage implements OnInit {
   }
 
   deleteData(id) {
-    this.storage.get("Notes").then(response => {
-      const notes = response.filter(notes => {
+    this.storage.get('Notes').then(response => {
+      const notes = response.filter(( notes : { createdDate: number; }) => {
         return notes.createdDate !== id;
       });
-      console.log(notes);
-      this.storage.set("Notes", notes);
+      this.storage.set('Notes', notes).then(() => {
+
+        this.router.navigateByUrl('/app/tabs/notes');
+      });
     });
   }
 }

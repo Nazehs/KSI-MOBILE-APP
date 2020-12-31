@@ -38,9 +38,12 @@
             </ion-item>
           </div>
           <ion-text color="danger float-right">
-            <!-- <em [hidden]="(username.invalid && username.touched)" class="ion-padding-left">
+            <!-- <em [hidden]="username.valid && username.touched" class="ion-padding-left">
               username is required
             </em> -->
+            <em *ngIf="(username.invalid && username.touched)" class="ion-padding-left">
+              username is required
+            </em>
           </ion-text>
         </ion-col>
       </ion-row>
@@ -56,9 +59,9 @@
             </ion-item>
           </div>
           <ion-text color="danger float-right">
-            <!-- <em [hidden]="login.password.valid || submitted == false" padding-left>
+            <em *ngIf="(password.invalid && password.touched)" padding-left>
               password is required
-            </em> -->
+            </em>
           </ion-text>
         </ion-col>
       </ion-row>
@@ -68,20 +71,19 @@
           <div class="login-btn">
             <ion-button expand="block" shape="round" class="btn-height btn-primary" (click)="appLogin(loginForm)">
               <!-- default value  when not clicked -->
-              <div *ngIf="!isbusy"> 
+              <div *ngIf="!isbusy">
                 LOGIN
               </div>
-<!-- show this when user click for validations and signin -->
-              <div #loginbusy *ngIf="isbusy">
+              <!-- show this when user click for validations and signin -->
+              <div *ngIf="isbusy">
                 Signing in, please wait...
               </div>
-              <ion-ripple-effect></ion-ripple-effect>
+            
             </ion-button>
           </div>
 
           <!-- //end of login form -->
         </ion-col>
-
       </ion-row>
       <ion-row>
         <ion-col>

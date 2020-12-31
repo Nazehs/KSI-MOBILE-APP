@@ -22,7 +22,7 @@
                         <ion-label class="ion-text-wrap">
                           <ion-text><h2 [innerHTML]="nudget.content"> {{nudget.content}}</h2></ion-text>
                           <p class="date inline">{{nudget.createdDate | date}}</p>
-                          <p class="date inline"><ion-icon name="share"></ion-icon></p>
+                          <p class="date inline" (click)="shareNudget(nudget)"><ion-icon name="share"></ion-icon></p>
                         </ion-label>
                       </ion-item>
                     </ion-col>                 

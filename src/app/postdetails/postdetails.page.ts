@@ -1,6 +1,7 @@
 import { Component,ViewEncapsulation, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { KsiSampleData } from '../../providers/ksi-sample-data';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'postdetails',
@@ -14,6 +15,7 @@ export class PostdetailsPage implements OnInit {
   constructor( 
     private dataProvider: KsiSampleData,
     private router: Router,
+    private socialSharing : SocialSharing,
     private route: ActivatedRoute) { }
 
     ngOnInit() {
@@ -34,5 +36,15 @@ export class PostdetailsPage implements OnInit {
     });
   }
  
+  socialNetWorkSHare(devotion){
+    // Check if sharing via email is supported
+this.socialSharing.canShareVia('KSI', devotion, 'subject', '',).then(response=>{
+  console.log(response);
+}).catch(error=>{
+  console.error(error);
+  
+});
+
+  }
 
 }

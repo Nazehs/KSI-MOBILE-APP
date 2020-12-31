@@ -1,17 +1,8 @@
-import { VersesPageModule } from './../verses/verses.module';
-import { RequestsPageModule } from './../requests/requests.module';
-import { DashboardPageModule } from './../dashboard/dashboard.module';
-import { BookmarkPageModule } from './../bookmark/bookmark.module';
-import { InsightPageModule } from './../insight/insight.module';
-import { MotivationPageModule } from './../motivation/motivation.module';
-import { LovePageModule } from './../love/love.module';
-import { PrayersPageModule } from './../prayers/prayers.module';
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs-page';
 import { HomePage } from '../home/home.page';
-import { SchedulePage } from '../schedule/schedule';
-import { HomePageModule } from '../home/home.module';
 import { DataResolverService } from 'src/providers/resolverData';
 // import { PostsPage } from "../../pages/posts/posts.page";
 
@@ -36,44 +27,6 @@ const routes: Routes = [
             path: '',
             component: HomePage
           }
-          // {
-          //   path: "single-post/:postId",
-          //   loadChildren:() => import('../single-post/single-post.module').then(m => m.SinglePostPageModule)
-          // }
-        ]
-      },
-      {
-        path: 'schedule',
-        children: [
-          {
-            path: '',
-            component: SchedulePage
-          },
-          {
-            path: 'session/:sessionId',
-            loadChildren:
-              '../session-detail/session-detail.module#SessionDetailModule'
-          }
-        ]
-      },
-      {
-        path: 'speakers',
-        children: [
-          {
-            path: '',
-            loadChildren:
-              '../speaker-list/speaker-list.module#SpeakerListModule'
-          },
-          {
-            path: 'session/:sessionId',
-            loadChildren:
-              '../session-detail/session-detail.module#SessionDetailModule'
-          },
-          {
-            path: 'speaker-details/:speakerId',
-            loadChildren:
-              '../speaker-detail/speaker-detail.module#SpeakerDetailModule'
-          }
         ]
       },
       {
@@ -95,6 +48,7 @@ const routes: Routes = [
           }
         ]
       },
+     
       {
         path: 'dashboards',
         children: [
@@ -113,16 +67,15 @@ const routes: Routes = [
               )
           },
           {
-            path: 'prayers',
-            loadChildren: () =>
-              import('../prayers/prayers.module').then(m => m.PrayersPageModule)
-          },
-          {
             path: 'word-clips',
             loadChildren: () =>
               import('../word-clips/word-clips.module').then(
                 m => m.WordClipsPageModule
               )
+          },
+          {
+            path:'accounts',
+            loadChildren:()=>import('../accounts/accounts.module').then(m => m.AccountsPageModule)
           },
           {
             path: 'push-network',
@@ -133,27 +86,28 @@ const routes: Routes = [
                   import('../push-network/push-network.module').then(
                     m => m.PushNetworkPageModule
                   )
-              },
+              },              
               {
-                path: 'prayer',
+                path: 'prayer-details',
                 loadChildren: () =>
                   import('../prayer-details/prayer-details.module').then(
                     m => m.PrayerDetailsPageModule
                   )
-              }
+              },
+               {
+                path: 'edit-prayer',
+                loadChildren: () =>
+                  import('../edit-prayer/edit-prayer.module').then(
+                    m => m.EditPrayerPageModule
+                  )
+              },
+             
             ]
           },
           {
             path: 'insight',
             loadChildren: () =>
               import('../insight/insight.module').then(m => m.InsightPageModule)
-          },
-          {
-            path: 'requests',
-            loadChildren: () =>
-              import('../requests/requests.module').then(
-                m => m.RequestsPageModule
-              )
           },
           {
             path: 'chatroom-list',
@@ -199,15 +153,6 @@ const routes: Routes = [
         loadChildren: '../settings/settings.module#SettingsPageModule'
       },
       {
-        path: 'bookmark',
-        children: [
-          {
-            path: '',
-            loadChildren: '../bookmark/bookmark.module#BookmarkPageModule'
-          }
-        ]
-      },
-      {
         path: 'about',
         children: [
           {
@@ -235,18 +180,7 @@ const routes: Routes = [
               )
           }
         ]
-      },
-      {
-        path: 'generals',
-        loadChildren: './generals/generals.module#GeneralsPageModule'
-      },
-      { path: 'plans', loadChildren: './plans/plans.module#PlansPageModule' },
-
-      // { path: "plans", loadChildren: "../plans/plans.module#PlansPageModule" },
-      {
-        path: 'generals',
-        loadChildren: './generals/generals.module#GeneralsPageModule'
-      }
+      }  
     ]
   }
 ];

@@ -8,6 +8,7 @@ export interface userSignUp {
   password: string;
   email: string;
   fullName: string;
+  userid: Number;
   passwordComfirm: string;
 }
 
